@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Brand Colors
  * Plugin URI:        https://github.com/bluestormcreative/brandcolors
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Devs don't let users use colorpickers. Give them their brand colors instead.
  * Version:           1.0.0
  * Author:            Blue Storm Creative
  * Author URI:        https://bluestormcreative.com
