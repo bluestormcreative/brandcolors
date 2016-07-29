@@ -23,10 +23,10 @@
 
         <!-- add color slug class to body class -->
         <fieldset>
-            <legend class="screen-reader-text"><span><?php _e('Add Post, page or product slug to body class', $this->plugin_name); ?></span></legend>
-            <label for="<?php echo $this->plugin_name; ?>-body_class_slug">
-                <input type="checkbox" id="<?php echo $this->plugin_name;?>-body_class_slug" name="<?php echo $this->plugin_name; ?>[body_class_slug]" value="1" />
-                <span><?php esc_attr_e('Add Post slug to body class', $this->plugin_name); ?></span>
+            <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', $this->plugin_name); ?></span></legend>
+            <label for="<?php echo $this->plugin_name; ?>-primary-color">
+                <input type="text" id="<?php echo $this->plugin_name;?>-primary-color" name="<?php echo $this->plugin_name; ?> primary color" value="1" />
+                <span><?php esc_attr_e('Primary brand color', $this->plugin_name); ?></span>
             </label>
         </fieldset>
 
