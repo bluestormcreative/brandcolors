@@ -102,52 +102,52 @@ class Bsc_Brand_Colors_Admin {
 
 	}
 
-}
+	/**
+	 * Register the administration menu for this plugin into the WordPress Dashboard menu.
+	 *
+	 * @since    1.0.0
+	 */
+
+	public function bsc_add_plugin_admin_menu() {
+
+	    /*
+	     * Add a settings page for this plugin to the Settings menu.
+	     *
+	     * NOTE:  Alternative menu locations are available via WordPress administration menu functions.
+	     *
+	     *        Administration Menus: http://codex.wordpress.org/Administration_Menus
+	     *
+	     */
+	    add_submenu_page( 'themes.php', 'Brand Colors', 'Set Brand Colors', 'manage_options', $this->plugin_name, array($this, 'bsc_display_plugin_setup_page')
+	    );
+	}
 
 
-/**
- * Register the administration menu for this plugin into the WordPress Dashboard menu.
- *
- * @since    1.0.0
- */
+	 /**
+	 * Add settings action link to the plugins page.
+	 *
+	 * @since    1.0.0
+	 */
 
-public function bsc_add_plugin_admin_menu() {
+	public function bsc_add_action_links( $links ) {
+	    /*
+	    *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
+	    */
+	   $settings_link = array(
+	    '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
+	   );
+	   return array_merge(  $settings_link, $links );
 
-    /*
-     * Add a settings page for this plugin to the Settings menu.
-     *
-     * NOTE:  Alternative menu locations are available via WordPress administration menu functions.
-     *
-     *        Administration Menus: http://codex.wordpress.org/Administration_Menus
-     *
-     */
-    add_options_page( 'Brand Colors', 'Set Brand Colors', 'manage_options', $this->plugin_name, array($this, 'bsc_display_plugin_setup_page')
-    );
-}
+	}
 
- /**
- * Add settings action link to the plugins page.
- *
- * @since    1.0.0
- */
+	/**
+	 * Render the settings page for this plugin.
+	 *
+	 * @since    1.0.0
+	 */
 
-public function bsc_add_action_links( $links ) {
-    /*
-    *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
-    */
-   $settings_link = array(
-    '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
-   );
-   return array_merge(  $settings_link, $links );
+	public function bsc_display_plugin_setup_page() {
+	    include_once( 'partials/wp-cbf-admin-display.php' );
+	}
 
-}
-
-/**
- * Render the settings page for this plugin.
- *
- * @since    1.0.0
- */
-
-public function bsc_display_plugin_setup_page() {
-    include_once( 'partials/wp-cbf-admin-display.php' );
-}
+} // end class Bsc_Brand_colors
