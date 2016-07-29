@@ -23,6 +23,13 @@
 
 class Bsc_Brand_Colors_Admin {
 
+
+	/**
+	 * Get our saved options.
+	 *
+	 */
+	public $options;
+
 	/**
 	 * The ID of this plugin.
 	 *
@@ -78,8 +85,8 @@ class Bsc_Brand_Colors_Admin {
 	 */
 	public function bsc_enqueue_scripts() {
 
-		// Add our admin js.
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bsc-brand-colors-admin.js', array( 'jquery' ), $this->version, false );
+		// Add our admin js with jQuery and wp-color-picker dependencies.
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/bsc-brand-colors-admin.js', array( 'jquery', 'wp-color-picker' ), $this->version, false );
 
 	}
 
@@ -160,7 +167,7 @@ class Bsc_Brand_Colors_Admin {
 		 if ( FALSE === $this->bsc_check_color( $primaryColor ) ) {
 
 			 // Set the error message
-			 add_settings_error( 'bsc_settings_options', 'bsc_pc_error', 'Insert a valid color for Primary Color', 'error' ); // $setting, $code, $message, $type
+			 add_settings_error( 'bsc_settings_options', 'bsc_color_error', 'Insert a valid #HEX color i.e. #ffffff', 'error' ); // $setting, $code, $message, $type
 
 			 // Get the previous valid value
 			 $valid_fields['bsc-brand-colors-primary-color'] = $this->options['bsc-brand-colors-primary-color'];
