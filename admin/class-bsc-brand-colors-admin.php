@@ -149,15 +149,15 @@ class Bsc_Brand_Colors_Admin {
 
 	public function bsc_validate( $fields ) {
 
-	    // Setup our return array for all form inputs.
-	    $valid = array();
+		// Setup our return array for all form inputs.
+		$valid = array();
 
-	    // Cleanup each form input.
+		// Cleanup each form input.
 		$primaryColor = trim( $fields['bsc-brand-colors-primary-color'] );
 		$primaryColor = strip_tags( stripslashes( $primaryColor ) );
 
 		 // Check if is a valid hex color.
-		 if ( FALSE === $this->check_color( $primaryColor ) ) {
+		 if ( FALSE === $this->bsc_check_color( $primaryColor ) ) {
 
 			 // Set the error message
 			 add_settings_error( 'bsc_settings_options', 'bsc_pc_error', 'Insert a valid color for Primary Color', 'error' ); // $setting, $code, $message, $type
@@ -171,7 +171,19 @@ class Bsc_Brand_Colors_Admin {
 
 		 }
 
-	    return $valid;
+		return $valid;
 	 }
+
+	 /**
+	 * Function that will check if value is a valid HEX color.
+	 */
+	public function bsc_check_color( $value ) {
+
+		if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) { // if user insert a HEX color with #
+    	return true;
+	}
+
+		return false;
+	}
 
 } // end class Bsc_Brand_colors
