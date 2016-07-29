@@ -21,6 +21,12 @@
 
     <form method="post" name="brand_colors" action="options.php">
 
+        <?php
+
+            // Add nonce, option_page, action, and http_referrer fields as hidden fields.
+            // Reference here: https://codex.wordpress.org/Function_Reference/settings_fields
+            settings_fields($this->plugin_name); ?>
+
         <!-- add color slug class to body class -->
         <fieldset>
             <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', $this->plugin_name); ?></span></legend>
