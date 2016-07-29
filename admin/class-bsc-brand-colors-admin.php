@@ -147,7 +147,7 @@ class Bsc_Brand_Colors_Admin {
 	 */
 
 	public function bsc_display_plugin_setup_page() {
-	    include_once( 'partials/wp-cbf-admin-display.php' );
+	    include_once( 'partials/bsc-brand-colors-admin-display.php' );
 	}
 
 } // end class Bsc_Brand_colors
