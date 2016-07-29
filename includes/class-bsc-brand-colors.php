@@ -151,6 +151,7 @@ class Bsc_Brand_Colors {
 
 		$plugin_admin = new Bsc_Brand_Colors_Admin( $this->get_plugin_name(), $this->get_version() );
 
+		// Enqueue all the things. 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'bsc_enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'bsc_enqueue_scripts' );
 
