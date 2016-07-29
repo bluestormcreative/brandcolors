@@ -25,7 +25,7 @@
         <fieldset>
             <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', $this->plugin_name); ?></span></legend>
             <label for="<?php echo $this->plugin_name; ?>-primary-color">
-                <input type="text" id="<?php echo $this->plugin_name;?>-primary-color" name="<?php echo $this->plugin_name; ?> primary color" value="1" />
+                <input type="text" id="<?php echo $this->plugin_name;?>-primary-color" name="<?php echo $this->plugin_name; ?> primary color" class="bsc-color-picker color-field" value="" />
                 <span><?php esc_attr_e('Primary brand color', $this->plugin_name); ?></span>
             </label>
         </fieldset>
