@@ -132,12 +132,22 @@ class Bsc_Brand_Colors_Admin {
 	}
 
 	/**
+	 * Add the save/update function for our options.
+	 *
+	 * @since    1.0.0
+	 */
+
+	public function options_update() {
+	   register_setting($this->plugin_name, $this->plugin_name, array($this, 'bsc_validate'));
+	}
+
+	/**
 	 * Validate our form input fields.
 	 *
 	 * @since    1.0.0
 	 */
 
-	public function validate( $fields ) {
+	public function bsc_validate( $fields ) {
 
 	    // Setup our return array for all form inputs.
 	    $valid = array();
@@ -158,7 +168,7 @@ class Bsc_Brand_Colors_Admin {
 		 } else {
 
 			 $valid_fields['bsc-brand-colors-primary-color'] = $primaryColor;
-		  
+
 		 }
 
 	    return $valid;
