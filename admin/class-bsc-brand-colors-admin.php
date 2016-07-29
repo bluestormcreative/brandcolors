@@ -131,4 +131,37 @@ class Bsc_Brand_Colors_Admin {
 	    include_once( 'partials/bsc-brand-colors-admin-display.php' );
 	}
 
+	/**
+	 * Validate our form input fields.
+	 *
+	 * @since    1.0.0
+	 */
+
+	public function validate( $fields ) {
+
+	    // Setup our return array for all form inputs.
+	    $valid = array();
+
+	    // Cleanup each form input.
+		$primaryColor = trim( $fields['bsc-brand-colors-primary-color'] );
+		$primaryColor = strip_tags( stripslashes( $primaryColor ) );
+
+		 // Check if is a valid hex color.
+		 if ( FALSE === $this->check_color( $primaryColor ) ) {
+
+			 // Set the error message
+			 add_settings_error( 'bsc_settings_options', 'bsc_pc_error', 'Insert a valid color for Primary Color', 'error' ); // $setting, $code, $message, $type
+
+			 // Get the previous valid value
+			 $valid_fields['bsc-brand-colors-primary-color'] = $this->options['bsc-brand-colors-primary-color'];
+
+		 } else {
+
+			 $valid_fields['bsc-brand-colors-primary-color'] = $primaryColor;
+		  
+		 }
+
+	    return $valid;
+	 }
+
 } // end class Bsc_Brand_colors
