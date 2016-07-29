@@ -17,26 +17,31 @@
 
 <div class="wrap">
 
-    <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+    <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
     <form method="post" name="brand_colors" action="options.php">
 
         <?php
+            //Grab all options
+            $options = get_option( $this->plugin_name );
+
+            // Color picker.
+            $primaryColor = $options['bsc-brand-colors-primary-color'];
 
             // Add nonce, option_page, action, and http_referrer fields as hidden fields.
             // Reference here: https://codex.wordpress.org/Function_Reference/settings_fields
-            settings_fields($this->plugin_name); ?>
+            settings_fields( $this->plugin_name ); ?>
 
-        <!-- add color slug class to body class -->
-        <fieldset>
-            <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', $this->plugin_name); ?></span></legend>
-            <label for="<?php echo $this->plugin_name; ?>-primary-color">
-                <input type="text" id="<?php echo $this->plugin_name;?>-primary-color" name="<?php echo $this->plugin_name; ?> primary color" class="bsc-color-picker color-field" value="" />
-                <span><?php esc_attr_e('Primary brand color', $this->plugin_name); ?></span>
-            </label>
-        </fieldset>
+            <!-- Our color picker field -->
+            <fieldset>
+                <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', $this->plugin_name); ?></span></legend>
+                <label for="<?php echo $this->plugin_name; ?>-primary-color">
+                    <input type="text" id="<?php echo $this->plugin_name;?>-primary-color" name="<?php echo $this->plugin_name; ?> primary color" class="bsc-color-picker color-field" value="<?php if ( $primaryColor != '' ) { echo $primaryColor; } ?>" />
+                    <span><?php esc_attr_e('Primary brand color', $this->plugin_name); ?></span>
+                </label>
+            </fieldset>
 
-        <?php submit_button('Save all changes', 'primary','submit', TRUE); ?>
+        <?php submit_button( 'Save all changes', 'primary','submit', TRUE ); ?>
 
     </form>
 
