@@ -26,7 +26,11 @@
             $options = get_option( $this->plugin_name );
 
             // Color picker.
-            $primaryColor = $options['bsc-brand-colors-primary-color'];
+            if ( isset( $options['bsc-brand-colors-primary-color'] ) ) {
+                $primaryColor = $options['bsc-brand-colors-primary-color'];
+            } else {
+                $primaryColor = '';
+            }
 
             // Add nonce, option_page, action, and http_referrer fields as hidden fields.
             // Reference here: https://codex.wordpress.org/Function_Reference/settings_fields
