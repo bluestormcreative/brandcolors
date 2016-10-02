@@ -2,3 +2,12 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.set-colors-form fieldset {
+    margin: 20px 0;
+}
+ .set-colors-form span {
+     display: inline-block;
+     position: relative;
+     top: -10px;
+ }
