@@ -68,7 +68,7 @@ class Bsc_Brand_Colors {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'bsc-brand-colors';
+		$this->plugin_name = 'bsc_brand_colors';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -163,7 +163,7 @@ class Bsc_Brand_Colors {
 		$this->loader->add_filter( 'plugin_action_links_' . $plugin_basename, $plugin_admin, 'bsc_add_action_links' );
 
 		// Save/Update our plugin options
-		$this->loader->add_action('admin_init', $plugin_admin, 'bsc_register_options');
+		$this->loader->add_action('admin_init', $plugin_admin, 'bsc_bc_register_options');
 	}
 
 	/**
