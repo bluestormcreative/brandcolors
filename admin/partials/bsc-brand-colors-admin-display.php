@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Create the Brand Settings admin page
+ * Create the Brand Colors settings admin page
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
@@ -15,9 +15,11 @@
 
 <!-- The markup for our admin setting page. This file should primarily consist of HTML with a little bit of PHP. -->
 
-<div class="wrap">
+<div class="wrap brand-colors-admin-page">
 
     <h2 class="admin-page-title"><?php echo esc_html( get_admin_page_title() ); ?></h2>
+
+    <p class="admin-description">Set the brand colors that this site can use in the text editor. Colors will be available from an editor button to wrap any text, without the need to use a colorpicker.</p>
 
     <form method="post" name="brand_colors" class="set-colors-form" action="options.php">
 
