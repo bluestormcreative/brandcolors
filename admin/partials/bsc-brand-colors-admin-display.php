@@ -19,7 +19,7 @@
 
     <h2 class="admin-page-title"><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-    <p class="admin-description">Set the brand colors that this site can use in the text editor. Colors will be available from an editor button to wrap any text, without the need to use a colorpicker or hex code on the post editor page.</p>
+    <p class="admin-description"><?php esc_html_e( 'Set the brand colors that this site can use in the text editor. Colors will be available from an editor button to wrap any text, without the need to use a colorpicker or hex code on the post editor page.', $this->plugin_name ); ?></p>
 
     <form method="post" name="brand_colors" class="set-colors-form" action="options.php">
 
