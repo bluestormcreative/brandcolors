@@ -28,26 +28,26 @@
             $options = get_option( $this->plugin_name );
 
             // Color picker and nickname fields.
-            if ( isset( $options['bsc-brand-colors-primary-color'] ) ) {
-                $primaryColor = $options['bsc-brand-colors-primary-color'];
+            if ( isset( $options['bsc_brand_colors-primary-color'] ) ) {
+                $primaryColor = $options['bsc_brand_colors-primary-color'];
             } else {
                 $primaryColor = '';
             }
 
-            if ( isset( $options['bsc-brand-colors-primary-color-nickname'] ) ) {
-                $primaryColorNickname = $options['bsc-brand-colors-primary-color-nickname'];
+            if ( isset( $options['bsc_brand_colors-primary-color-nickname'] ) ) {
+                $primaryColorNickname = $options['bsc_brand_colors-primary-color-nickname'];
             } else {
                 $primaryColorNickname = '';
             }
 
-            if ( isset( $options['bsc-brand-colors-secondary-color'] ) ) {
-                $secondaryColor = $options['bsc-brand-colors-secondary-color'];
+            if ( isset( $options['bsc_brand_colors-secondary-color'] ) ) {
+                $secondaryColor = $options['bsc_brand_colors-secondary-color'];
             } else {
                 $secondaryColor = '';
             }
 
-            if ( isset( $options['bsc-brand-colors-secondary-color-nickname'] ) ) {
-                $secondaryColorNickname = $options['bsc-brand-colors-secondary-color-nickname'];
+            if ( isset( $options['bsc_brand_colors-secondary-color-nickname'] ) ) {
+                $secondaryColorNickname = $options['bsc_brand_colors-secondary-color-nickname'];
             } else {
                 $secondaryColorNickname = '';
             }
@@ -84,10 +84,10 @@
                 </div>
                 <div class="nickname-container">
                     <label for="<?php echo $this->plugin_name; ?>-secondary-color-nickname">
-                        <input type="text" id="<?php echo $this->plugin_name;?>-secondary-color-nickname" name="<?php echo $this->plugin_name; ?> Secondary_color_nickname" class="nickname-field" value="<?php echo $secondaryColorNickname; ?>" />
+                        <input type="text" id="<?php echo $this->plugin_name;?>-secondary-color-nickname" name="<?php echo $this->plugin_name; ?> secondary_color_nickname" class="nickname-field" value="<?php echo $secondaryColorNickname; ?>" />
                         <span><?php esc_attr_e('Secondary brand color nickname', $this->plugin_name); ?></span>
                     </label>
-                </div>    
+                </div>
             </fieldset>
 
         <?php submit_button( 'Save brand colors', 'primary','submit', TRUE ); ?>
