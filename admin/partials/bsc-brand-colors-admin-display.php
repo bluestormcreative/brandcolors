@@ -27,11 +27,17 @@
             //Grab all options
             $options = get_option( $this->plugin_name );
 
-            // Color picker.
+            // Color picker and nickname fields.
             if ( isset( $options['bsc-brand-colors-primary-color'] ) ) {
                 $primaryColor = $options['bsc-brand-colors-primary-color'];
             } else {
                 $primaryColor = '';
+            }
+
+            if ( isset( $options['bsc-brand-colors-primary-color-nickname'] ) ) {
+                $primaryColorNickname = $options['bsc-brand-colors-primary-color-nickname'];
+            } else {
+                $primaryColorNickname = '';
             }
 
             if ( isset( $options['bsc-brand-colors-secondary-color'] ) ) {
@@ -40,25 +46,48 @@
                 $secondaryColor = '';
             }
 
+            if ( isset( $options['bsc-brand-colors-secondary-color-nickname'] ) ) {
+                $secondaryColorNickname = $options['bsc-brand-colors-secondary-color-nickname'];
+            } else {
+                $secondaryColorNickname = '';
+            }
+
             // Add nonce, option_page, action, and http_referrer fields as hidden fields.
             // Reference here: https://codex.wordpress.org/Function_Reference/settings_fields
             settings_fields( $this->plugin_name ); ?>
 
             <!-- Our color picker fields -->
             <fieldset>
-                <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', $this->plugin_name); ?></span></legend>
-                <label for="<?php echo $this->plugin_name; ?>-primary-color">
-                    <input type="text" id="<?php echo $this->plugin_name;?>-primary-color" name="<?php echo $this->plugin_name; ?> primary color" class="bsc-color-picker color-field" value="<?php if ( $primaryColor != '' ) { echo $primaryColor; } ?>" />
-                    <span><?php esc_attr_e('Primary brand color', $this->plugin_name); ?></span>
-                </label>
+                <div class="colorpicker-container">
+                    <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', $this->plugin_name); ?></span></legend>
+                    <label for="<?php echo $this->plugin_name; ?>-primary-color">
+                        <input type="text" id="<?php echo $this->plugin_name;?>-primary-color" name="<?php echo $this->plugin_name; ?> primary_color" class="bsc-color-picker color-field" value="<?php echo $primaryColor; ?>" />
+                        <span><?php esc_attr_e('Primary brand color', $this->plugin_name); ?></span>
+                    </label>
+                </div>
+                <div class="nickname-container">
+                    <label for="<?php echo $this->plugin_name; ?>-primary-color-nickname">
+                        <input type="text" id="<?php echo $this->plugin_name;?>-primary-color-nickname" name="<?php echo $this->plugin_name; ?> primary_color_nickname" class="nickname-field" value="<?php echo $primaryColorNickname; ?>" />
+                        <span><?php esc_attr_e('Primary brand color nickname', $this->plugin_name); ?></span>
+                    </label>
+                </div>
+
             </fieldset>
 
             <fieldset>
-                <legend class="screen-reader-text"><span><?php _e('Add a Secondary brand color', $this->plugin_name); ?></span></legend>
-                <label for="<?php echo $this->plugin_name; ?>-secondary-color">
-                    <input type="text" id="<?php echo $this->plugin_name;?>-secondary-color" name="<?php echo $this->plugin_name; ?> primary color" class="bsc-color-picker color-field" value="<?php if ( $secondaryColor != '' ) { echo $secondaryColor; } ?>" />
-                    <span><?php esc_attr_e('Secondary brand color', $this->plugin_name); ?></span>
-                </label>
+                <div class="colorpicker-container">
+                    <legend class="screen-reader-text"><span><?php _e('Add a Secondary brand color', $this->plugin_name); ?></span></legend>
+                    <label for="<?php echo $this->plugin_name; ?>-secondary-color">
+                        <input type="text" id="<?php echo $this->plugin_name;?>-secondary-color" name="<?php echo $this->plugin_name; ?> primary color" class="bsc-color-picker color-field" value="<?php if ( $secondaryColor != '' ) { echo $secondaryColor; } ?>" />
+                        <span><?php esc_attr_e('Secondary brand color', $this->plugin_name); ?></span>
+                    </label>
+                </div>
+                <div class="nickname-container">
+                    <label for="<?php echo $this->plugin_name; ?>-secondary-color-nickname">
+                        <input type="text" id="<?php echo $this->plugin_name;?>-secondary-color-nickname" name="<?php echo $this->plugin_name; ?> Secondary_color_nickname" class="nickname-field" value="<?php echo $secondaryColorNickname; ?>" />
+                        <span><?php esc_attr_e('Secondary brand color nickname', $this->plugin_name); ?></span>
+                    </label>
+                </div>    
             </fieldset>
 
         <?php submit_button( 'Save brand colors', 'primary','submit', TRUE ); ?>
