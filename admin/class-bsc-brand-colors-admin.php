@@ -143,8 +143,8 @@ class Bsc_Brand_Colors_Admin {
 	 * @since    1.0.0
 	 */
 
-	public function bsc_register_options() {
-	   register_setting( $this->plugin_name.'-settings', $this->plugin_name );
+	public function bsc_bc_register_options() {
+	   register_setting( $this->plugin_name, $this->plugin_name, array( $this, 'bsc_bc_validate_options') );
 	}
 
 	/**
@@ -153,43 +153,69 @@ class Bsc_Brand_Colors_Admin {
 	 * @since    1.0.0
 	 */
 
-	public function bsc_validate( $fields ) {
+	public function bsc_bc_validate_options( $fields ) {
 
-		// Setup our return array for all form inputs.
-		$valid = array();
+		// Set up our return array.
+	    $valid_fields = array();
 
-		// Cleanup each form input.
-		$primaryColor = trim( $fields['bsc-brand-colors-primary-color'] );
-		$primaryColor = strip_tags( stripslashes( $primaryColor ) );
+	    // Validate Primary Color
+	    $primaryColor = trim( $fields['primaryColor'] );
+	    $primaryColor = strip_tags( stripslashes( $primaryColor ) );
 
-		 // Check if is a valid hex color.
-		 if ( FALSE === $this->bsc_check_color( $primaryColor ) ) {
+	    // Check if is a valid hex color
+	    if( FALSE === $this->bsc_bc_check_color( $primaryColor ) ) {
 
-			 // Set the error message
-			 add_settings_error( 'bsc_settings_options', 'bsc_color_error', 'Insert a valid #HEX color i.e. #ffffff', 'error' ); // $setting, $code, $message, $type
+	        // Set the error message
+	        add_settings_error( 'bsc_settings_options', 'bsc_color_error', 'Insert a valid color for Primary brand color', 'error' ); // $setting, $code, $message, $type
 
-			 // Get the previous valid value
-			 $valid_fields['bsc-brand-colors-primary-color'] = $this->options['bsc-brand-colors-primary-color'];
+	        // Get the previous valid value
+	        $valid_fields['primaryColor'] = $this->options['primaryColor'];
 
-		 } else {
+	    } else {
 
-			 $valid_fields['bsc-brand-colors-primary-color'] = $primaryColor;
+	        $valid_fields['primaryColor'] = $primaryColor;
 
-		 }
+	    }
 
-		return $valid;
-	 }
+		// Validate Secondary Color
+		$secondaryColor = trim( $fields['secondaryColor'] );
+		$secondaryColor = strip_tags( stripslashes( $secondaryColor ) );
 
-	 /**
-	 * Function that will check if value is a valid HEX color.
-	 */
-	public function bsc_check_color( $value ) {
+		// Check if is a valid hex color
+		if( FALSE === $this->bsc_bc_check_color( $secondaryColor ) ) {
 
-		if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) { // if user insert a HEX color with #
-    	return true;
-	}
+			// Set the error message
+			add_settings_error( 'bsc_settings_options', 'bsc_color_error', 'Insert a valid color for Secondary brand color', 'error' ); // $setting, $code, $message, $type
 
-		return false;
+			// Get the previous valid value
+			$valid_fields['secondaryColor'] = $this->options['secondaryColor'];
+
+		} else {
+
+			$valid_fields['secondaryColor'] = $secondaryColor;
+
+		}
+
+		// Validate Nickname Fields
+		$primaryColorNickname = trim( $fields['primaryColorNickname'] );
+		$valid_fields['primaryColorNickname'] = strip_tags( stripslashes( $primaryColorNickname ) );
+
+		$secondaryColorNickname = trim( $fields['secondaryColorNickname'] );
+		$valid_fields['secondaryColorNickname'] = strip_tags( stripslashes( $secondaryColorNickname ) );
+
+    return apply_filters( 'validate_options', $valid_fields, $fields);
+}
+
+/**
+ * Function that will check if value is a valid HEX color.
+ */
+	public function bsc_bc_check_color( $value ) {
+
+	    if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) { // if user insert a HEX color with #
+	        return true;
+	    }
+
+	    return false;
 	}
 
 } // end class Bsc_Brand_colors
