@@ -106,8 +106,7 @@ class Bsc_Brand_Colors_Admin {
 	     *        Administration Menus: http://codex.wordpress.org/Administration_Menus
 	     *
 	     */
-	    add_submenu_page( 'themes.php', 'Brand Colors', 'Set Brand Colors', 'manage_options', $this->plugin_name, array($this, 'bsc_display_plugin_setup_page')
-	    );
+	    add_submenu_page( 'themes.php', 'Brand Colors', 'Set Brand Colors', 'manage_options', $this->plugin_name, array( $this, 'bsc_display_plugin_setup_page') );
 	}
 
 
@@ -144,8 +143,8 @@ class Bsc_Brand_Colors_Admin {
 	 * @since    1.0.0
 	 */
 
-	public function bsc_options_update() {
-	   register_setting( $this->plugin_name, $this->plugin_name );
+	public function bsc_register_options() {
+	   register_setting( $this->plugin_name.'-settings', $this->plugin_name );
 	}
 
 	/**
