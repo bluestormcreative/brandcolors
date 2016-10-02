@@ -17,9 +17,9 @@
 
 <div class="wrap">
 
-    <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+    <h2 class="admin-page-title"><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-    <form method="post" name="brand_colors" class="set_colors_form" action="options.php">
+    <form method="post" name="brand_colors" class="set-colors-form" action="options.php">
 
         <?php
             //Grab all options
