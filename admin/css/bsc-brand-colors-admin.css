@@ -5,7 +5,6 @@
 
  .brand-colors-admin-page .admin-description {
      margin: 20px 0;
-     width: 50%;
  }
 
 .set-colors-form fieldset {
@@ -16,3 +15,11 @@
      position: relative;
      top: -10px;
  }
+
+
+/* media queries */
+@media (min-width:768px) {
+     .brand-colors-admin-page .admin-description {
+         width: 50%;
+     }
+}
