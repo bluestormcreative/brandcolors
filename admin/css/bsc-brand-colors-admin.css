@@ -10,7 +10,7 @@
 .set-colors-form fieldset {
     margin: 20px 0;
 }
- .set-colors-form span:not(.wp-picker-input-wrap) {
+ .set-colors-form .colorpicker-container span{
      display: inline-block;
      position: relative;
      top: -10px;
