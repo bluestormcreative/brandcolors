@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Provide a admin area view for the plugin
+ * Create the Brand Settings admin page
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
@@ -19,7 +19,7 @@
 
     <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-    <form method="post" name="brand_colors" action="options.php">
+    <form method="post" name="brand_colors" class="set_colors_form" action="options.php">
 
         <?php
             //Grab all options
@@ -32,16 +32,30 @@
                 $primaryColor = '';
             }
 
+            if ( isset( $options['bsc-brand-colors-secondary-color'] ) ) {
+                $secondaryColor = $options['bsc-brand-colors-secondary-color'];
+            } else {
+                $secondaryColor = '';
+            }
+
             // Add nonce, option_page, action, and http_referrer fields as hidden fields.
             // Reference here: https://codex.wordpress.org/Function_Reference/settings_fields
             settings_fields( $this->plugin_name ); ?>
 
-            <!-- Our color picker field -->
+            <!-- Our color picker fields -->
             <fieldset>
                 <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', $this->plugin_name); ?></span></legend>
                 <label for="<?php echo $this->plugin_name; ?>-primary-color">
                     <input type="text" id="<?php echo $this->plugin_name;?>-primary-color" name="<?php echo $this->plugin_name; ?> primary color" class="bsc-color-picker color-field" value="<?php if ( $primaryColor != '' ) { echo $primaryColor; } ?>" />
                     <span><?php esc_attr_e('Primary brand color', $this->plugin_name); ?></span>
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend class="screen-reader-text"><span><?php _e('Add a Secondary brand color', $this->plugin_name); ?></span></legend>
+                <label for="<?php echo $this->plugin_name; ?>-secondary-color">
+                    <input type="text" id="<?php echo $this->plugin_name;?>-secondary-color" name="<?php echo $this->plugin_name; ?> primary color" class="bsc-color-picker color-field" value="<?php if ( $secondaryColor != '' ) { echo $secondaryColor; } ?>" />
+                    <span><?php esc_attr_e('Secondary brand color', $this->plugin_name); ?></span>
                 </label>
             </fieldset>
 
