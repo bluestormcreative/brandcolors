@@ -19,7 +19,7 @@
 
     <h2 class="admin-page-title"><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-    <p class="admin-description">Set the brand colors that this site can use in the text editor. Colors will be available from an editor button to wrap any text, without the need to use a colorpicker.</p>
+    <p class="admin-description">Set the brand colors that this site can use in the text editor. Colors will be available from an editor button to wrap any text, without the need to use a colorpicker or hex code on the post editor page.</p>
 
     <form method="post" name="brand_colors" class="set-colors-form" action="options.php">
 
@@ -61,7 +61,7 @@
                 </label>
             </fieldset>
 
-        <?php submit_button( 'Save all changes', 'primary','submit', TRUE ); ?>
+        <?php submit_button( 'Save brand colors', 'primary','submit', TRUE ); ?>
 
     </form>
 
