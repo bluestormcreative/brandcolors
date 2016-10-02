@@ -145,7 +145,7 @@ class Bsc_Brand_Colors_Admin {
 	 */
 
 	public function bsc_options_update() {
-	   register_setting( $this->plugin_name, $this->plugin_name, array( $this, 'bsc_validate') );
+	   register_setting( $this->plugin_name, $this->plugin_name );
 	}
 
 	/**
