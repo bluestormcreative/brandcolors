@@ -32,22 +32,26 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( "PLUGIN_URL", trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
-function
+/*
+* Register activation hook to run setup function
+*
+*/
+register_activation_hook( PLUGIN_URL, 'bsc_bc_setup_plugin' );
 
 /*
 * Enqueue our plugin scripts/styles
 *
 */
-function bsc_bc_setup () {
+function bsc_bc_setup_plugin() {
 
 	add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
 
 }
 
-function bsc_bc_add_scripts () {
+function bsc_bc_add_scripts() {
 
-	wp_register_style( 'bsc_bc_styles', PLUGIN_URL .'/admin/css/bsc-brand-colors-admin.css' );
-	wp_register_script( 'bsc_bc_scripts', PLUGIN_URL  .'/admin/js/bsc-brand-colors-admin.js', array( 'jquery', 'wp-color-picker' ), '', true );
+	wp_enqueue_style( 'bsc_bc_styles', PLUGIN_URL .'/admin/css/bsc-brand-colors-admin.css' );
+	wp_enqueue_script( 'bsc_bc_scripts', PLUGIN_URL  .'/admin/js/bsc-brand-colors-admin.js', array( 'jquery', 'wp-color-picker' ), '', true );
 }
 
 
@@ -57,7 +61,8 @@ function bsc_bc_add_scripts () {
 */
 add_action('admin_menu', 'bsc_bc_setup_menu');
 
-function bsc_bc_setup_menu(){
+function bsc_bc_setup_menu() {
+
         add_submenu_page( 'themes.php', 'Brand Colors', 'Set Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_setup_admin_page' );
 }
 /*
