@@ -30,46 +30,81 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-bsc-brand-colors-activator.php
- */
-function activate_bsc_brand_colors() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-bsc-brand-colors-activator.php';
-	Bsc_Brand_Colors_Activator::activate();
-}
+define( "PLUGIN_URL", trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-bsc-brand-colors-deactivator.php
- */
-function deactivate_bsc_brand_colors() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-bsc-brand-colors-deactivator.php';
-	Bsc_Brand_Colors_Deactivator::deactivate();
-}
+function
 
-register_activation_hook( __FILE__, 'activate_bsc_brand_colors' );
-register_deactivation_hook( __FILE__, 'deactivate_bsc_brand_colors' );
+/*
+* Enqueue our plugin scripts/styles
+*
+*/
+function bsc_bc_setup () {
 
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
-require plugin_dir_path( __FILE__ ) . 'includes/class-bsc-brand-colors.php';
-
-/**
- * Begins execution of the plugin.
- *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
- *
- * @since    1.0.0
- */
-function run_bsc_brand_colors() {
-
-	$plugin = new Bsc_Brand_Colors();
-	$plugin->run();
+	add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
 
 }
-run_bsc_brand_colors();
+
+function bsc_bc_add_scripts () {
+
+	wp_register_style( 'bsc_bc_styles', PLUGIN_URL .'/admin/css/bsc-brand-colors-admin.css' );
+	wp_register_script( 'bsc_bc_scripts', PLUGIN_URL  .'/admin/js/bsc-brand-colors-admin.js', array( 'jquery', 'wp-color-picker' ), '', true );
+}
+
+
+/*
+* Set up plugin menu page under Appearance top-level menu
+*
+*/
+add_action('admin_menu', 'bsc_bc_setup_menu');
+
+function bsc_bc_setup_menu(){
+        add_submenu_page( 'themes.php', 'Brand Colors', 'Set Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_setup_admin_page' );
+}
+/*
+* Render the admin page
+*
+*/
+function bsc_bc_setup_admin_page() {
+
+	ob_start();
+
+	?>
+
+	<div class="wrap">
+
+	    <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+
+	    <form method="post" name="brand_colors" class="set-colors-form" action="options.php">
+
+	        <?php
+	            //Grab all options
+	            $options = get_option( 'bsc_brand_colors' );
+
+	            // Color picker.
+	            if ( isset( $primaryColor ) ) {
+					$primaryColor = $options['bsc_brand_colors-primary-color'];
+				}
+
+	            // Add nonce, option_page, action, and http_referrer fields as hidden fields.
+	            // Reference here: https://codex.wordpress.org/Function_Reference/settings_fields
+	            settings_fields( 'bsc_brand_colors' ); ?>
+
+	            <!-- Our color picker field -->
+	            <fieldset>
+	                <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', bsc_brand_colors); ?></span></legend>
+	                <label for="bsc_brand_colors-primary-color">
+	                    <input type="text" id="bsc_brand_colors-primary-color" name="bsc_brand_colors_primary_color" class="bsc-color-picker color-field" value="<?php if ( isset( $primaryColor ) ) { echo $primaryColor; } ?>" />
+	                    <span><?php esc_attr_e('Primary brand color', 'bsc-brand-colors'); ?></span>
+	                </label>
+	            </fieldset>
+
+	        <?php submit_button( 'Save brand colors', 'primary','submit', TRUE ); ?>
+
+	    </form>
+
+	</div>
+	<?php
+
+	echo ob_get_clean();
+
+}
