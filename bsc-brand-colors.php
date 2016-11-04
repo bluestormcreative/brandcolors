@@ -56,6 +56,13 @@ function bsc_bc_add_scripts() {
 	wp_enqueue_style( 'bsc-bc-styles', PLUGIN_URL . '/admin/css/bsc-brand-colors-admin.css' );
 	wp_enqueue_script( 'bsc-bc-scripts', PLUGIN_URL . '/admin/js/bsc-brand-colors-admin.js', array( 'jquery', 'wp-color-picker' ), '', true );
 
+	wp_enqueue_script( 'bsc-bc-buttons', PLUGIN_URL . '/admin/js/bsc-brand-colors-tinymce-buttons.js', array( 'jquery' ), '', true );
+
+	$data_to_be_passed = array(
+		'brand_colors'	=> get_option( 'bsc_brand_colors' ),
+	);
+	wp_localize_script( 'bsc-bc-buttons', 'php_vars', $data_to_be_passed );
+
 }
 
 
@@ -144,4 +151,40 @@ function bsc_bc_display_admin_page() {
 
 	echo bsc_bc_setup_admin_page();
 
+}
+
+/**
+ * Declare the TinyMCE button
+ *
+ **/
+ function bsc_bc_add_tinymce_button() {
+	 global $typenow;
+
+	// check user permissions
+	if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+	 	return;
+	}
+
+	// verify the post type
+	if ( ! in_array( $typenow, array( 'post', 'page' ), true ) ) {
+		 return;
+	}
+
+	// check if WYSIWYG is enabled
+	if ( get_user_option( 'rich_editing' ) === 'true' ) {
+		add_filter( 'mce_buttons', 'bsc_bc_register_tinymce_button');
+		add_filter( 'mce_external_plugins', 'bsc_bc_add_tinymce_plugin' );
+	}
+ }
+add_action( 'admin_head', 'bsc_bc_add_tinymce_button' );
+
+function bsc_bc_add_tinymce_plugin( $plugin_array ) {
+	$plugin_array['bsc_bc_tinymce_button'] = PLUGIN_URL . '/admin/js/bsc-brand-colors-tinymce-buttons.js';
+
+	return $plugin_array;
+}
+
+function bsc_bc_register_tinymce_button( $buttons ) {
+	array_push( $buttons, 'bsc_bc_tinymce_button' );
+	return $buttons;
 }
