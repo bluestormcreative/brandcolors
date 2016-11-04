@@ -1,4 +1,4 @@
-(function( $ ) {
+(function() {
 
     tinymce.PluginManager.add('bsc_bc_tinymce_button', function( editor, url ) {
 
@@ -62,4 +62,4 @@
 
     });
 
-})(jQuery);
+})();
