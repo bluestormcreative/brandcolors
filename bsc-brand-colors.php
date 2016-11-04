@@ -205,3 +205,46 @@ function bsc_bc_register_tinymce_button( $buttons ) {
 	array_push( $buttons, 'bsc_bc_tinymce_button' );
 	return $buttons;
 }
+
+
+/**
+ * Add styles to the admin head for button menu
+ *
+ */
+function bsc_bc_add_header_styles() {
+
+	$colors = get_option('bsc_brand_colors');
+
+	ob_start(); ?>
+	<style id="bsc-bc-button-styles">
+
+		.mce-container .mce-bc-button-first span {
+			color: <?php echo $colors['primary-color']; ?>;
+		}
+
+		.mce-container.mce-menu .mce-bc-button-first:hover {
+			background: <?php echo $colors['primary-color']; ?>;
+		}
+
+		.mce-container .mce-bc-button-second span {
+			color: <?php echo $colors['second-color']; ?>;
+		}
+
+		.mce-container.mce-menu .mce-bc-button-second:hover {
+			background: <?php echo $colors['second-color']; ?>;
+		}
+
+		.mce-container .mce-bc-button-third span {
+			color: <?php echo $colors['third-color']; ?>;
+		}
+
+		.mce-container.mce-menu .mce-bc-button-third:hover {
+			background: <?php echo $colors['third-color']; ?>;
+		}
+
+	</style>
+
+	<?php
+
+}
+add_action( 'admin_head', 'bsc_bc_add_header_styles' );
