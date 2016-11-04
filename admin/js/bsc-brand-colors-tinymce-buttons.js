@@ -14,6 +14,7 @@
         editor.addButton( 'bsc_bc_tinymce_button', {
             text: 'Brand Colors',
             type: 'menubutton',
+            classes: 'bsc-bc-button',
             icon: 'icon dashicons-art',
             tooltip: 'Select some text and wrap it in your brand colors',
             menu: [
