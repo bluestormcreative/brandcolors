@@ -21,6 +21,7 @@
                 {
                     text: 'Primary Color',
                     value: php_vars.brand_colors['primary-color'],
+                    classes: 'bc-button-first',
                     onclick: function() {
                         wrapSelection( this.value() );
                     }
@@ -28,6 +29,7 @@
                 {
                     text: 'Second Color',
                     value: php_vars.brand_colors['second-color'],
+                    classes: 'bc-button-second',
                     onclick: function() {
                         wrapSelection( this.value() );
                     }
@@ -35,6 +37,7 @@
                 {
                     text: 'Third Color',
                     value: php_vars.brand_colors['third-color'],
+                    classes: 'bc-button-third',
                     onclick: function() {
                         wrapSelection( this.value() );
                     }
