@@ -13,6 +13,13 @@
     top: -9px;
  }
 
+ .wp-picker-open + .wp-picker-input-wrap {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 1px;
+}
+
  i.mce-i-icon {
     font: 400 20px/1 dashicons;
     padding: 0;
