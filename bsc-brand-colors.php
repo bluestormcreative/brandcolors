@@ -67,7 +67,7 @@ add_action( 'admin_menu', 'bsc_bc_setup_menu' );
 
 function bsc_bc_setup_menu() {
 
-	add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_setup_admin_page' );
+	add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_display_admin_page' );
 }
 
 /**
@@ -125,13 +125,23 @@ function bsc_bc_setup_admin_page() {
 					</label>
 	            </fieldset>
 
-	        <?php submit_button( 'Save brand colors', 'primary','submit', TRUE ); ?>
+	        <?php submit_button( 'Save brand colors', 'primary','submit', true ); ?>
 
 	    </form>
 
 	</div>
 	<?php
 
-	echo ob_get_clean();
+	return ob_get_clean();
+
+}
+
+/**
+ * Display the admin page
+ *
+ **/
+function bsc_bc_display_admin_page() {
+
+	echo bsc_bc_setup_admin_page();
 
 }
