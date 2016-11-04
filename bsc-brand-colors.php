@@ -172,8 +172,8 @@ function bsc_bc_display_admin_page() {
 
 	// check if WYSIWYG is enabled
 	if ( get_user_option( 'rich_editing' ) === 'true' ) {
-		add_filter( 'mce_external_plugins', 'bsc_bc_add_tinymce_plugin' );
 		add_filter( 'mce_buttons', 'bsc_bc_register_tinymce_button');
+		add_filter( 'mce_external_plugins', 'bsc_bc_add_tinymce_plugin' );
 	}
  }
 add_action( 'admin_head', 'bsc_bc_add_tinymce_button' );
