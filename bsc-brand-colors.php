@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( "PLUGIN_URL", trailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 /*
 * Register activation hook to run setup function
@@ -44,14 +44,18 @@ register_activation_hook( PLUGIN_URL, 'bsc_bc_setup_plugin' );
 */
 function bsc_bc_setup_plugin() {
 
-	add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
+	echo "setup function ran";
 
 }
 
+add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
 function bsc_bc_add_scripts() {
+	wp_enqueue_style( 'wp-color-picker');
+	wp_enqueue_script( 'wp-color-picker');
 
-	wp_enqueue_style( 'bsc_bc_styles', PLUGIN_URL .'/admin/css/bsc-brand-colors-admin.css' );
-	wp_enqueue_script( 'bsc_bc_scripts', PLUGIN_URL  .'/admin/js/bsc-brand-colors-admin.js', array( 'jquery', 'wp-color-picker' ), '', true );
+	wp_enqueue_style( 'bsc-bc-styles', PLUGIN_URL .'/admin/css/bsc-brand-colors-admin.css' );
+	wp_enqueue_script( 'bsc-bc-scripts', PLUGIN_URL .'/admin/js/bsc-brand-colors-admin.js', array( 'jquery', 'wp-color-picker' ), '', true );
+
 }
 
 
@@ -63,14 +67,14 @@ add_action('admin_menu', 'bsc_bc_setup_menu');
 
 function bsc_bc_setup_menu() {
 
-        add_submenu_page( 'themes.php', 'Brand Colors', 'Set Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_setup_admin_page' );
+        add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_setup_admin_page' );
 }
 /*
 * Render the admin page
 *
 */
 function bsc_bc_setup_admin_page() {
-
+	print_r(PLUGIN_URL);
 	ob_start();
 
 	?>
@@ -79,26 +83,26 @@ function bsc_bc_setup_admin_page() {
 
 	    <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-	    <form method="post" name="brand_colors" class="set-colors-form" action="options.php">
+	    <form method="post" name="brand-colors" class="set-colors-form" action="options.php">
 
 	        <?php
 	            //Grab all options
-	            $options = get_option( 'bsc_brand_colors' );
+	            $options = get_option( 'bsc-brand-colors' );
 
 	            // Color picker.
 	            if ( isset( $primaryColor ) ) {
-					$primaryColor = $options['bsc_brand_colors-primary-color'];
+					$primaryColor = $options['bsc-brand-colors-primary-color'];
 				}
 
 	            // Add nonce, option_page, action, and http_referrer fields as hidden fields.
 	            // Reference here: https://codex.wordpress.org/Function_Reference/settings_fields
-	            settings_fields( 'bsc_brand_colors' ); ?>
+	            settings_fields( 'bsc-brand-colors' ); ?>
 
 	            <!-- Our color picker field -->
 	            <fieldset>
-	                <legend class="screen-reader-text"><span><?php _e('Add a Primary brand color', bsc_brand_colors); ?></span></legend>
+	                <legend class="screen-reader-text"><span><?php _e( 'Add a Primary brand color', 'bsc-brand-colors' ); ?></span></legend>
 	                <label for="bsc_brand_colors-primary-color">
-	                    <input type="text" id="bsc_brand_colors-primary-color" name="bsc_brand_colors_primary_color" class="bsc-color-picker color-field" value="<?php if ( isset( $primaryColor ) ) { echo $primaryColor; } ?>" />
+	                    <input type="text" id="bsc-brand-colors-primary-color" name="bsc-brand-colors-primary-color" class="bsc-color-picker color-field" value="<?php if ( isset( $primaryColor ) ) { echo $primaryColor; } ?>" />
 	                    <span><?php esc_attr_e('Primary brand color', 'bsc-brand-colors'); ?></span>
 	                </label>
 	            </fieldset>
