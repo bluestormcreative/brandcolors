@@ -49,6 +49,7 @@ function bsc_bc_setup_plugin() {
 }
 
 add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
+
 function bsc_bc_add_scripts() {
 	wp_enqueue_style( 'wp-color-picker');
 	wp_enqueue_script( 'wp-color-picker');
@@ -67,8 +68,19 @@ add_action('admin_menu', 'bsc_bc_setup_menu');
 
 function bsc_bc_setup_menu() {
 
-        add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_setup_admin_page' );
+    add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_setup_admin_page' );
 }
+
+/*
+* Register our settings
+*
+*/
+add_action( 'admin_init', 'bsc_bc_register_settings' );
+
+function bsc_bc_register_settings() {
+	register_setting( 'bsc_brand_colors', 'bsc_bc_brand_colors' );
+}
+
 /*
 * Render the admin page
 *
@@ -86,23 +98,26 @@ function bsc_bc_setup_admin_page() {
 	    <form method="post" name="brand-colors" class="set-colors-form" action="options.php">
 
 	        <?php
-	            //Grab all options
-	            $options = get_option( 'bsc-brand-colors' );
-
-	            // Color picker.
-	            if ( isset( $primaryColor ) ) {
-					$primaryColor = $options['bsc-brand-colors-primary-color'];
+				if ( isset( $_POST['bsc_brand_colors-primary-color'] ) ) {
+					update_option( 'bsc_bc_brand_colors', $_POST['bsc_brand_colors-primary-color'] );
+				$primaryColor = $_POST['bsc_brand_colors-primary-color'];
 				}
+
+				$colorArray = get_option( 'bsc_bc_brand_colors' );
+
+				print_r( $colorArray );
 
 	            // Add nonce, option_page, action, and http_referrer fields as hidden fields.
 	            // Reference here: https://codex.wordpress.org/Function_Reference/settings_fields
-	            settings_fields( 'bsc-brand-colors' ); ?>
+	            settings_fields( 'bsc_brand_colors' );
+
+			?>
 
 	            <!-- Our color picker field -->
 	            <fieldset>
 	                <legend class="screen-reader-text"><span><?php _e( 'Add a Primary brand color', 'bsc-brand-colors' ); ?></span></legend>
 	                <label for="bsc_brand_colors-primary-color">
-	                    <input type="text" id="bsc-brand-colors-primary-color" name="bsc-brand-colors-primary-color" class="bsc-color-picker color-field" value="<?php if ( isset( $primaryColor ) ) { echo $primaryColor; } ?>" />
+	                    <input type="text" id="bsc_brand_colors-primary-color" name="bsc_brand_colors-primary-color" class="bsc-color-picker color-field" value="<?php if ( isset( $primaryColor ) ) { echo $primaryColor; } ?>" />
 	                    <span><?php esc_attr_e('Primary brand color', 'bsc-brand-colors'); ?></span>
 	                </label>
 	            </fieldset>
