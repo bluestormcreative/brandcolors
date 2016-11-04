@@ -39,5 +39,7 @@
 
             tinyMCE.activeEditor.selection.setContent('<span class="brand-color" style="color: ' + color + '">' + selection + '</span>');
         }
+
     });
+
 })(jQuery);
