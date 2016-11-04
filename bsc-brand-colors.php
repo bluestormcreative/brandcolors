@@ -40,7 +40,7 @@ register_activation_hook( PLUGIN_URL, 'bsc_bc_setup_plugin' );
 /**
  * Setup our plugin functions
  *
- **/
+ */
 function bsc_bc_setup_plugin() {
 
 	echo 'setup function ran';
@@ -80,7 +80,7 @@ function bsc_bc_setup_menu() {
 /**
  * Register our settings
  *
- **/
+ */
 if ( ! function_exists( 'bsc_bc_update_brand_colors' ) ) {
 	function bsc_bc_update_brand_colors() {
 		register_setting( 'bsc_brand_colors', 'bsc_brand_colors' );
@@ -93,7 +93,7 @@ add_action( 'admin_init', 'bsc_bc_update_brand_colors' );
 /**
  * Render the admin page
  *
- **/
+ */
 function bsc_bc_setup_admin_page() {
 
 	ob_start();
@@ -146,7 +146,7 @@ function bsc_bc_setup_admin_page() {
 /**
  * Display the admin page
  *
- **/
+ */
 function bsc_bc_display_admin_page() {
 
 	echo bsc_bc_setup_admin_page();
@@ -156,7 +156,7 @@ function bsc_bc_display_admin_page() {
 /**
  * Declare the TinyMCE button
  *
- **/
+ */
  function bsc_bc_add_tinymce_button() {
 	 global $typenow;
 
@@ -171,19 +171,36 @@ function bsc_bc_display_admin_page() {
 	}
 
 	// check if WYSIWYG is enabled
-	if ( get_user_option( 'rich_editing' ) === 'true' ) {
-		add_filter( 'mce_buttons', 'bsc_bc_register_tinymce_button');
-		add_filter( 'mce_external_plugins', 'bsc_bc_add_tinymce_plugin' );
+	if ( get_user_option( 'rich_editing' ) !== 'true' ) {
+		return;
 	}
- }
+
+	// Set up some filters.
+	add_filter( 'mce_buttons', 'bsc_bc_register_tinymce_button' );
+	add_filter( 'mce_external_plugins', 'bsc_bc_add_tinymce_plugin' );
+}
 add_action( 'admin_head', 'bsc_bc_add_tinymce_button' );
 
+
+/**
+ * Adds a TinyMCE plugin compatible JS file to the TinyMCE / Visual Editor instance
+ *
+ * @param array $plugin_array Array of registered TinyMCE Plugins.
+ * @return array Modified array of registered TinyMCE Plugins
+ */
 function bsc_bc_add_tinymce_plugin( $plugin_array ) {
 	$plugin_array['bsc_bc_tinymce_button'] = PLUGIN_URL . '/admin/js/bsc-brand-colors-tinymce-buttons.js';
 
 	return $plugin_array;
 }
 
+
+/**
+ * Adds a button to the TinyMCE / Visual Editor for our brand colors selection
+ *
+ * @param array $buttons Array of registered TinyMCE Buttons.
+ * @return array Modified array of registered TinyMCE Buttons
+ */
 function bsc_bc_register_tinymce_button( $buttons ) {
 	array_push( $buttons, 'bsc_bc_tinymce_button' );
 	return $buttons;
