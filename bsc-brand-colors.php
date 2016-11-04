@@ -56,6 +56,13 @@ function bsc_bc_add_scripts() {
 	wp_enqueue_style( 'bsc-bc-styles', PLUGIN_URL . '/admin/css/bsc-brand-colors-admin.css' );
 	wp_enqueue_script( 'bsc-bc-scripts', PLUGIN_URL . '/admin/js/bsc-brand-colors-admin.js', array( 'jquery', 'wp-color-picker' ), '', true );
 
+	wp_enqueue_script( 'bsc-bc-buttons', PLUGIN_URL . '/admin/js/bsc-brand-colors-tinymce-buttons.js', array( 'jquery' ), '', true );
+
+	$data_to_be_passed = array(
+		'brand_colors'	=> get_option( 'bsc_brand_colors' ),
+	);
+	wp_localize_script( 'bsc-bc-buttons', 'php_vars', $data_to_be_passed );
+
 }
 
 
