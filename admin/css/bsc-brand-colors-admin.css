@@ -34,3 +34,7 @@
 	margin-left: -2px;
 	padding-right: 2px
 }
+
+ #bsc-brand-colors-editor td {
+	 padding-bottom: 0;
+ }
