@@ -244,6 +244,10 @@ function bsc_bc_add_header_styles() {
 		.mce-container.mce-menu .mce-bc-button-third:hover {
 			background: <?php echo $colors['third-color']; ?>;
 		}
+		.mce-container.mce-menu .mce-bc-button-clear:hover {
+			background: #000000;
+		}
+
 
 	</style>
 
