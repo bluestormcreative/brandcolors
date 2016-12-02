@@ -147,8 +147,27 @@ function bsc_bc_setup_admin_page() {
 							<input type="text" id="bsc_brand_colors-color-4" name="bsc_brand_colors[color-4]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-4'] ) ) { echo esc_html( $color_array['color-4'], 'bsc-brand-colors' ); } ?>" />
 
 							<input type="text" id="bsc_brand_colors-third-color-4-label" size="25" name="bsc_brand_colors[color-4-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-4-label'] ) ) { echo esc_html( $color_array['color-4-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+
+							<button class="btnDelete">Delete</button>
 						</td>
-						<td><button class="btnDelete">Delete</button></td>
+					</tr>
+					<tr>
+						<td id='bsc-brand-colors-color-4'>
+							<input type="text" id="bsc_brand_colors-color-4" name="bsc_brand_colors[color-4]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-4'] ) ) { echo esc_html( $color_array['color-4'], 'bsc-brand-colors' ); } ?>" />
+
+							<input type="text" id="bsc_brand_colors-third-color-4-label" size="25" name="bsc_brand_colors[color-4-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-4-label'] ) ) { echo esc_html( $color_array['color-4-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+
+							<button class="btnDelete">Delete</button>
+						</td>
+					</tr>
+					<tr>
+						<td id='bsc-brand-colors-color-4'>
+							<input type="text" id="bsc_brand_colors-color-4" name="bsc_brand_colors[color-4]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-4'] ) ) { echo esc_html( $color_array['color-4'], 'bsc-brand-colors' ); } ?>" />
+
+							<input type="text" id="bsc_brand_colors-third-color-4-label" size="25" name="bsc_brand_colors[color-4-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-4-label'] ) ) { echo esc_html( $color_array['color-4-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+
+							<button class="btnDelete">Delete</button>
+						</td>
 					</tr>
 				  </tbody>
 				</table>
