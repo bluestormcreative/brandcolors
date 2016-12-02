@@ -15,7 +15,7 @@
  * Plugin Name:       Brand Colors
  * Plugin URI:        https://github.com/bluestormcreative/brandcolors
  * Description:       Devs don't let users use colorpickers. Give them their brand colors instead.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Blue Storm Creative
  * Author URI:        https://bluestormcreative.com
  * License:           GPL-2.0+
@@ -76,6 +76,22 @@ function bsc_bc_setup_menu() {
 
 	add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_display_admin_page' );
 }
+
+
+/*
+* Add action link to plugin settings page
+*
+*/
+function bsc_bc_add_action_links( $links ) {
+
+    $action_link = '<a href="themes.php?page=bsc_brand_colors">' . esc_html( 'Set Brand Colors', 'bsc-brand-colors' ) . '</a>';
+
+	// Add to the end of default action links.
+    array_push( $links, $action_link );
+  	return $links;
+}
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_action_links', 10, 2 );
+
 
 /**
  * Register our settings
