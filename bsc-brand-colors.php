@@ -143,28 +143,28 @@ function bsc_bc_setup_admin_page() {
 						</td>
 					</tr>
 					<tr>
-						<td id='bsc-brand-colors-color-4'>
-							<input type="text" id="bsc_brand_colors-color-4" name="bsc_brand_colors[color-4]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-4'] ) ) { echo esc_html( $color_array['color-4'], 'bsc-brand-colors' ); } ?>" />
+						<td id='bsc-brand-colors-color-1'>
+							<input type="text" id="bsc_brand_colors-color-1" name="bsc_brand_colors[color-1]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-1'] ) ) { echo esc_html( $color_array['color-4'], 'bsc-brand-colors' ); } ?>" />
 
-							<input type="text" id="bsc_brand_colors-third-color-4-label" size="25" name="bsc_brand_colors[color-4-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-4-label'] ) ) { echo esc_html( $color_array['color-4-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
-
-							<button class="btnDelete">Delete</button>
-						</td>
-					</tr>
-					<tr>
-						<td id='bsc-brand-colors-color-4'>
-							<input type="text" id="bsc_brand_colors-color-4" name="bsc_brand_colors[color-4]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-4'] ) ) { echo esc_html( $color_array['color-4'], 'bsc-brand-colors' ); } ?>" />
-
-							<input type="text" id="bsc_brand_colors-third-color-4-label" size="25" name="bsc_brand_colors[color-4-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-4-label'] ) ) { echo esc_html( $color_array['color-4-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+							<input type="text" id="bsc_brand_colors-third-color-1-label" size="25" name="bsc_brand_colors[color-1-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-1-label'] ) ) { echo esc_html( $color_array['color-1-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
 
 							<button class="btnDelete">Delete</button>
 						</td>
 					</tr>
 					<tr>
-						<td id='bsc-brand-colors-color-4'>
-							<input type="text" id="bsc_brand_colors-color-4" name="bsc_brand_colors[color-4]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-4'] ) ) { echo esc_html( $color_array['color-4'], 'bsc-brand-colors' ); } ?>" />
+						<td id='bsc-brand-colors-color-2'>
+							<input type="text" id="bsc_brand_colors-color-2" name="bsc_brand_colors[color-2]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-2'] ) ) { echo esc_html( $color_array['color-2'], 'bsc-brand-colors' ); } ?>" />
 
-							<input type="text" id="bsc_brand_colors-third-color-4-label" size="25" name="bsc_brand_colors[color-4-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-4-label'] ) ) { echo esc_html( $color_array['color-4-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+							<input type="text" id="bsc_brand_colors-third-color-2-label" size="25" name="bsc_brand_colors[color-2-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-2-label'] ) ) { echo esc_html( $color_array['color-2-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+
+							<button class="btnDelete">Delete</button>
+						</td>
+					</tr>
+					<tr>
+						<td id='bsc-brand-colors-color-3'>
+							<input type="text" id="bsc_brand_colors-color-3" name="bsc_brand_colors[color-3]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['color-3'] ) ) { echo esc_html( $color_array['color-4'], 'bsc-brand-colors' ); } ?>" />
+
+							<input type="text" id="bsc_brand_colors-third-color-3-label" size="25" name="bsc_brand_colors[color-3-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['color-3-label'] ) ) { echo esc_html( $color_array['color-3-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
 
 							<button class="btnDelete">Delete</button>
 						</td>
