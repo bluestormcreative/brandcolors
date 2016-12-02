@@ -138,7 +138,7 @@ function bsc_bc_setup_admin_page() {
 					  <tbody>
 						<tr>
 							<td id='bsc-brand-colors-toolbar' role='toolbar'>
-						  	<button id='bsc-brand-colors-add-button' type='submit' tabindex='8' name='bsc-action' value='add' class='button'>Add Brand Color</button>
+						  	<button id='bsc-brand-colors-add-button' type='submit' tabindex='8' name='bsc-action' value='add' class='bsc-add-button button'>Add Brand Color</button>
 							</td>
 						</tr>
 						<tr>
