@@ -77,17 +77,19 @@ function bsc_bc_setup_menu() {
 	add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_display_admin_page' );
 }
 
+
 /*
-* Add link to plugin settings page
+* Add action link to plugin settings page
 *
 */
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_settings_link' );
-
-function bsc_bc_add_settings_link( $links ) {
-    $settings_link = '<a href="themes.php?page=bsc_brand_colors">' . __( 'Set Brand Colors' ) . '</a>';
-    array_merge( $links, $settings_link );
+function bsc_bc_add_action_links( $links ) {
+    $action_links = array(
+		'<a href="themes.php?page=bsc_brand_colors">' . __( 'Set Brand Colors' ) . '</a>',
+	);
+    array_merge( $links, $action_links );
   	return $links;
 }
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_action_links' );
 
 
 /**
