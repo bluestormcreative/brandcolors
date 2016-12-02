@@ -19,7 +19,7 @@
 			tooltip: 'Select some text and wrap it in your brand colors',
 			menu: [
 				{
-					text: 'Primary Color',
+					text: php_vars.brand_colors['primary-label'],
 					value: php_vars.brand_colors['primary-color'],
 					classes: 'bc-button-first',
 					onclick: function() {
@@ -33,7 +33,7 @@
 					}
 				},
 				{
-					text: 'Second Color',
+					text: php_vars.brand_colors['second-label'],
 					value: php_vars.brand_colors['second-color'],
 					classes: 'bc-button-second',
 					onclick: function() {
@@ -47,7 +47,7 @@
 					}
 				},
 				{
-					text: 'Third Color',
+					text: php_vars.brand_colors['third-label'],
 					value: php_vars.brand_colors['third-color'],
 					classes: 'bc-button-third',
 					onclick: function() {
