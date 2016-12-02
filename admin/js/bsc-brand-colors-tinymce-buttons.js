@@ -22,16 +22,13 @@
                     text: 'Primary Color',
                     value: php_vars.brand_colors['primary-color'],
                     classes: 'bc-button-first',
-					// inline: 'span',
-					// styles: {color: php_vars.brand_colors['primary-color']},
                     onclick: function() {
-                        //wrapSelection( this.value() );
 						editor.focus();
 							var color = this.value();
 							var text = editor.selection.getContent({'format': 'html'});
 
 							if(text && text.length > 0) {
-							editor.execCommand('mceReplaceContent', false, '<span style="'+color+'">'+text+'</span>');
+							editor.execCommand('forecolor', false, color );
 						}
                     }
                 },
@@ -40,7 +37,13 @@
                     value: php_vars.brand_colors['second-color'],
                     classes: 'bc-button-second',
                     onclick: function() {
-                        wrapSelection( this.value() );
+						editor.focus();
+							var color = this.value();
+							var text = editor.selection.getContent({'format': 'html'});
+
+							if(text && text.length > 0) {
+							editor.execCommand('forecolor', false, color );
+						}
                     }
                 },
                 {
@@ -48,7 +51,13 @@
                     value: php_vars.brand_colors['third-color'],
                     classes: 'bc-button-third',
                     onclick: function() {
-                        wrapSelection( this.value() );
+						editor.focus();
+							var color = this.value();
+							var text = editor.selection.getContent({'format': 'html'});
+
+							if(text && text.length > 0) {
+							editor.execCommand('forecolor', false, color );
+						}
                     }
                 },
                 {
