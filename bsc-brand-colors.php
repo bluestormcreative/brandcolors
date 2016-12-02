@@ -118,17 +118,17 @@ function bsc_bc_setup_admin_page() {
 	                <legend class="screen-reader-text"><span><?php esc_html_e( 'Add a Primary brand color', 'bsc-brand-colors' ); ?></span></legend>
 	                <label for="bsc_brand_colors-primary-color">
 	                    <input type="text" id="bsc_brand_colors-primary-color" name="bsc_brand_colors[primary-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['primary-color'] ) ) { echo esc_html( $color_array['primary-color'], 'bsc-brand-colors' ); } ?>" />
-	                    <span><?php esc_attr_e( 'Primary brand color', 'bsc-brand-colors' ); ?></span>
+	                    <span class="label-text"><?php esc_attr_e( 'Primary brand color', 'bsc-brand-colors' ); ?></span>
 	                </label>
 					<br>
 					<label for="bsc_brand_colors-second-color">
 						<input type="text" id="bsc_brand_colors-second-color" name="bsc_brand_colors[second-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['second-color'] ) ) { echo esc_html( $color_array['second-color'], 'bsc-brand-colors' ); } ?>" />
-						<span><?php esc_attr_e( 'Second brand color', 'bsc-brand-colors' ); ?></span>
+						<span class="label-text"><?php esc_attr_e( 'Second brand color', 'bsc-brand-colors' ); ?></span>
 					</label>
 					<br>
 					<label for="bsc_brand_colors-third-color">
 						<input type="text" id="bsc_brand_colors-third-color" name="bsc_brand_colors[third-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['third-color'] ) ) { echo esc_html( $color_array['third-color'], 'bsc-brand-colors' ); } ?>" />
-						<span><?php esc_attr_e( 'Third brand color', 'bsc-brand-colors' ); ?></span>
+						<span class="label-text"><?php esc_attr_e( 'Third brand color', 'bsc-brand-colors' ); ?></span>
 					</label>
 	            </fieldset>
 
