@@ -19,12 +19,21 @@
 
 			tds += '</tr>';
 
-			if ( $('tbody', this ).length > 0 ) {
-				$('tbody', this ).append( tds );
+			if ( $( 'tbody', this ).length > 0 ) {
+				$( 'tbody', this ).append( tds );
 			} else {
-				$(this).append( tds );
+				$( this ).append( tds );
 			}
 		});
+	});
+
+	// Delete table row when delete clicked.
+	$('#bsc-brand-colors-editor').on( 'click', '.btnDelete', function( event ){
+
+		event.preventDefault();
+
+		$( this ).closest( 'tr' ).remove();
+
 	});
 
 })( jQuery );
