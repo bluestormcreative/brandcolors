@@ -118,7 +118,8 @@ function bsc_bc_setup_admin_page() {
 	                <legend class="screen-reader-text"><span><?php esc_html_e( 'Add a Primary brand color', 'bsc-brand-colors' ); ?></span></legend>
 	                <label for="bsc_brand_colors-primary-color">
 	                    <input type="text" id="bsc_brand_colors-primary-color" name="bsc_brand_colors[primary-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['primary-color'] ) ) { echo esc_html( $color_array['primary-color'], 'bsc-brand-colors' ); } ?>" />
-						<input type="text" id="bsc_brand_colors-primary-color-label" name="bsc_brand_colors[primary-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['primary-color-label'] ) ) { echo esc_html( $color_array['primary-color-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+
+						<input type="text" id="bsc_brand_colors-primary-color-label" size="25" name="bsc_brand_colors[primary-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['primary-label'] ) ) { echo esc_html( $color_array['primary-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
 	                </label>
 					<br>
 					<label for="bsc_brand_colors-second-color">
