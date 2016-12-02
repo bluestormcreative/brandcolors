@@ -83,13 +83,14 @@ function bsc_bc_setup_menu() {
 *
 */
 function bsc_bc_add_action_links( $links ) {
-    $action_links = array(
-		'<a href="themes.php?page=bsc_brand_colors">' . __( 'Set Brand Colors' ) . '</a>',
-	);
-    array_merge( $links, $action_links );
+
+    $action_link = '<a href="themes.php?page=bsc_brand_colors">' . esc_html( 'Set Brand Colors', 'bsc-brand-colors' ) . '</a>';
+
+	// Add to the end of default action links.
+    array_push( $links, $action_link );
   	return $links;
 }
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_action_links' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_action_links', 10, 2 );
 
 
 /**
