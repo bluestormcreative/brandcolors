@@ -65,7 +65,12 @@
                     value: 'clear',
                     classes: 'bc-button-clear',
                     onclick: function() {
-                        clearSelection();
+						editor.focus();
+							var text = editor.selection.getContent({'format': 'html'});
+
+							if(text && text.length > 0) {
+							editor.execCommand('removeFormat');
+						}
                     }
                 },
             ]
