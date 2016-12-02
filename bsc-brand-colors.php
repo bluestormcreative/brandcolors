@@ -15,7 +15,7 @@
  * Plugin Name:       Brand Colors
  * Plugin URI:        https://github.com/bluestormcreative/brandcolors
  * Description:       Devs don't let users use colorpickers. Give them their brand colors instead.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Blue Storm Creative
  * Author URI:        https://bluestormcreative.com
  * License:           GPL-2.0+
