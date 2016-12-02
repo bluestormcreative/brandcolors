@@ -133,6 +133,15 @@ function bsc_bc_setup_admin_page() {
 
 						<input type="text" id="bsc_brand_colors-third-color-label" size="25" name="bsc_brand_colors[third-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['third-label'] ) ) { echo esc_html( $color_array['third-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
 					</label>
+
+					<table id='bsc-brand-colors-editor' aria-hidden='###' class='form-table'>
+					  <tbody>
+						<tr><td id='bsc-brand-colors-toolbar' role='toolbar'>
+						  <button id='bsc-brand-colors-add-button' type='submit' tabindex='8' name='bsc-action' value='add' class='button' aria-controls='bsc-brand-colors' accesskey='###'>Add Color</button>
+						</td></tr>
+						<tr><td id='kt_colors' data-empty='" . esc_attr__('Palette is empty', 'bsc-brand-colors') . "'>picker here</td></tr>
+					  </tbody>
+					</table>
 	            </fieldset>
 
 	        <?php submit_button( 'Save brand colors', 'primary','submit', true ); ?>
