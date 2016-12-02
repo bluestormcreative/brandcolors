@@ -61,7 +61,7 @@
                     }
                 },
                 {
-                    text: 'Clear',
+                    text: 'Clear Color',
                     value: 'clear',
                     classes: 'bc-button-clear',
                     onclick: function() {
