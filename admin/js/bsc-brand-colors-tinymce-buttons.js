@@ -25,7 +25,14 @@
 					// inline: 'span',
 					// styles: {color: php_vars.brand_colors['primary-color']},
                     onclick: function() {
-                        wrapSelection( this.value() );
+                        //wrapSelection( this.value() );
+						editor.focus();
+							var color = this.value();
+							var text = editor.selection.getContent({'format': 'html'});
+
+							if(text && text.length > 0) {
+							editor.execCommand('mceReplaceContent', false, '<span style="'+color+'">'+text+'</span>');
+						}
                     }
                 },
                 {
@@ -59,27 +66,27 @@
 
             // Get the selected node - we need the node for any html tags
             // TODO: I want this to only regex on .brand-color selectors...
-            // node = tinyMCE.activeEditor.selection.getNode();
-			//
-            // // Add a temporary div so we can strip out any tags
-            // var tmp = document.createElement("div");
-			//
-            // // Stuff our node into the temporary div
-            // tmp.appendChild(node);
-			//
-            // // Now let's get just the innerHTML of our temp div...
-            // selection = tmp.innerHTML;
-			//
-            // // And create a regex to remove html tags...
-            // var rex = /(<([^>]+)>)/ig;
-			//
-			//
-            // // And finally remove any tags from our selection.
-            // // TODO: this is set up to stop the button from endlessly wrapping our text in more and more spans. There must be a better way.
-            // selection = selection.replace( rex, "");
-			//
-            // // Set our new selection content and wrap in the proper color span.
-            // tinyMCE.activeEditor.selection.setContent('<span class="brand-color" style="color: ' + color + '">' + selection + '</span>');
+            node = tinyMCE.activeEditor.selection.getNode();
+
+            // Add a temporary div so we can strip out any tags
+            var tmp = document.createElement("div");
+
+            // Stuff our node into the temporary div
+            tmp.appendChild(node);
+
+            // Now let's get just the innerHTML of our temp div...
+            selection = tmp.innerHTML;
+
+            // And create a regex to remove html tags...
+            var rex = /(<([^>]+)>)/ig;
+
+
+            // And finally remove any tags from our selection.
+            // TODO: this is set up to stop the button from endlessly wrapping our text in more and more spans. There must be a better way.
+            selection = selection.replace( rex, "");
+
+            // Set our new selection content and wrap in the proper color span.
+            tinyMCE.activeEditor.selection.setContent('<span class="brand-color" style="color: ' + color + '">' + selection + '</span>');
         }
 
 
