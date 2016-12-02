@@ -22,9 +22,11 @@
                     text: 'Primary Color',
                     value: php_vars.brand_colors['primary-color'],
                     classes: 'bc-button-first',
-                    onclick: function() {
-                        wrapSelection( this.value() );
-                    }
+					inline: 'span',
+					styles: {color: php_vars.brand_colors['primary-color']},
+                    // onclick: function() {
+                    //     wrapSelection( this.value() );
+                    // }
                 },
                 {
                     text: 'Second Color',
