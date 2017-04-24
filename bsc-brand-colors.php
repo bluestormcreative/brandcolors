@@ -29,17 +29,20 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
 /*
 * Define the plugin path.
 *
 */
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
+
 /*
 * Register activation hook to run setup function
 *
 */
 register_activation_hook( PLUGIN_URL, 'bsc_bc_setup_plugin' );
+
 
 /**
  * Setup our plugin functions
@@ -50,6 +53,7 @@ function bsc_bc_setup_plugin() {
 	echo 'setup function ran';
 
 }
+
 
 /**
  * Enqueue our scripts and styles.
@@ -70,6 +74,7 @@ function bsc_bc_add_scripts() {
 	wp_localize_script( 'bsc-bc-buttons', 'php_vars', $data_to_be_passed );
 }
 add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
+
 
 /*
 * Set up plugin menu page under Appearance top-level menu
@@ -107,8 +112,6 @@ if ( ! function_exists( 'bsc_bc_update_brand_colors' ) ) {
 	}
 }
 add_action( 'admin_init', 'bsc_bc_update_brand_colors' );
-
-
 
 /**
  * Render the admin page
