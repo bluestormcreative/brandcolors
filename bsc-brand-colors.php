@@ -12,10 +12,10 @@
  * @package           Bsc_Brand_Colors
  *
  * @wordpress-plugin
- * Plugin Name:       Brand Colors
+ * Plugin Name:       Simple Branded Text Colors
  * Plugin URI:        https://github.com/bluestormcreative/brandcolors
- * Description:       Devs don't let users use colorpickers. Give them their brand colors instead.
- * Version:           1.0.1
+ * Description:       Set specific, branded colors to wrap text with in the editor.
+ * Version:           1.0.2
  * Author:            Blue Storm Creative
  * Author URI:        https://bluestormcreative.com
  * License:           GPL-2.0+
