@@ -82,7 +82,7 @@ add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
 */
 function bsc_bc_setup_menu() {
 
-	add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_display_admin_page' );
+	add_submenu_page( 'themes.php', 'Simple Branded Text Colors', 'Set Text Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_display_admin_page' );
 }
 add_action( 'admin_menu', 'bsc_bc_setup_menu' );
 
