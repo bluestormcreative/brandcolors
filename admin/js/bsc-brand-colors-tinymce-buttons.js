@@ -85,7 +85,7 @@
 	 */
 	getInfo : function() {
 		return {
-			longname : 'BSC Brand Color Button',
+			longname : 'Simple Branded Text Colors',
 			author : 'BlueStormCreative',
 			authorurl : 'https://bluestormcreative.com',
 			version : "0.1"
