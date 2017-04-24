@@ -1,7 +1,7 @@
 # Simple Branded Text Colors
 A simple WordPress plugin that allows users to choose their branded colors to wrap text in the TinyMCE editor. Set up your brand colors once and easily use them on every post or page.
 
-### INSTALLATION
+### Installation
 1. Install the plugin.
 2. Go to Appearance -> Set Text Colors
 3. Use the colorpickers to choose three colors. Optionally name these colors.
