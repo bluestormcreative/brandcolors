@@ -15,7 +15,7 @@
 			text: 'Brand Colors',
 			type: 'menubutton',
 			classes: 'bsc-bc-button',
-			icon: 'icon dashicons-art',
+			icon: 'icon dashicons-admin-appearance',
 			tooltip: 'Select some text and wrap it in your brand colors',
 			menu: [
 				{
