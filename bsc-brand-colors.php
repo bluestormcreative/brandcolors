@@ -245,7 +245,7 @@ function bsc_bc_add_header_styles() {
 
 	$colors = get_option( 'bsc_brand_colors' );
 
-	ob_start(); ?>
+	?>
 	<style id="bsc-bc-button-styles">
 
 		.mce-container .mce-bc-button-first span {
@@ -277,8 +277,6 @@ function bsc_bc_add_header_styles() {
 
 
 	</style>
-
 	<?php
-
 }
 add_action( 'admin_head', 'bsc_bc_add_header_styles' );
