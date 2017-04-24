@@ -127,7 +127,7 @@ function bsc_bc_setup_admin_page() {
 
 		<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-		<div class="description"><p>Set up your global brand colors here. These colors will be easily available to use with text on any post or page.</div>
+		<div class="description"><p><?php echo esc_html( 'Set up your global brand colors here. These colors will be easily available to use with text on any post or page.', 'bsc_brand_colors' ); ?></div>
 
 		<form method="post" action="options.php" name="brand-colors" class="set-colors-form">
 
@@ -171,6 +171,7 @@ function bsc_bc_setup_admin_page() {
 
 }
 
+
 /**
  * Display the admin page
  *
@@ -180,6 +181,7 @@ function bsc_bc_display_admin_page() {
 	echo bsc_bc_setup_admin_page();
 
 }
+
 
 /**
  * Declare the TinyMCE button
@@ -241,7 +243,7 @@ function bsc_bc_register_tinymce_button( $buttons ) {
  */
 function bsc_bc_add_header_styles() {
 
-	$colors = get_option('bsc_brand_colors');
+	$colors = get_option( 'bsc_brand_colors' );
 
 	ob_start(); ?>
 	<style id="bsc-bc-button-styles">
