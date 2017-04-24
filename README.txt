@@ -7,11 +7,11 @@ Stable tag: 4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple plugin that allows users to choose their branded colors only for use in the TinyMCE editor. Set up your brand colors once and easily use them on every post or page..
+A simple plugin that lets you choose your brand colors once, and then use them to change the color of selected text on any page or post. Quickly update text colors across pages without using the colorpicker every time.
 
 == Description ==
 
-Allows users to set up to three global brand colors to wrap their text with. Provides a TinyMCE button in the Visual editor to choose these colors quickly without using the colorpicker or entering a hex code on each page or post.
+A simple plugin that allows users to choose their branded colors to wrap text in the TinyMCE editor. Provides a TinyMCE button in the Visual editor to choose these colors quickly without using the colorpicker or entering a hex code on each page or post.
 
 
 == Installation ==
