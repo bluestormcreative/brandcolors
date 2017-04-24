@@ -144,19 +144,19 @@ function bsc_bc_setup_admin_page() {
 					<label for="bsc_brand_colors-primary-color">
 						<input type="text" id="bsc_brand_colors-primary-color" name="bsc_brand_colors[primary-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['primary-color'] ) ) { echo esc_html( $color_array['primary-color'], 'bsc-brand-colors' ); } ?>" />
 
-						<input type="text" id="bsc_brand_colors-primary-color-label" size="25" name="bsc_brand_colors[primary-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['primary-label'] ) ) { echo esc_html( $color_array['primary-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+						<input type="text" id="bsc_brand_colors-primary-color-label" size="25" name="bsc_brand_colors[primary-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['primary-label'] ) ) { echo esc_html( $color_array['primary-label'], 'bsc-brand-colors' ); } ?>" placeholder="Name this color" />
 					</label>
 					<br>
 					<label for="bsc_brand_colors-second-color">
 						<input type="text" id="bsc_brand_colors-second-color" name="bsc_brand_colors[second-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['second-color'] ) ) { echo esc_html( $color_array['second-color'], 'bsc-brand-colors' ); } ?>" />
 
-						<input type="text" id="bsc_brand_colors-second-color-label" size="25" name="bsc_brand_colors[second-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['second-label'] ) ) { echo esc_html( $color_array['second-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+						<input type="text" id="bsc_brand_colors-second-color-label" size="25" name="bsc_brand_colors[second-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['second-label'] ) ) { echo esc_html( $color_array['second-label'], 'bsc-brand-colors' ); } ?>" placeholder="Name this color" />
 					</label>
 					<br>
 					<label for="bsc_brand_colors-third-color">
 						<input type="text" id="bsc_brand_colors-third-color" name="bsc_brand_colors[third-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['third-color'] ) ) { echo esc_html( $color_array['third-color'], 'bsc-brand-colors' ); } ?>" />
 
-						<input type="text" id="bsc_brand_colors-third-color-label" size="25" name="bsc_brand_colors[third-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['third-label'] ) ) { echo esc_html( $color_array['third-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+						<input type="text" id="bsc_brand_colors-third-color-label" size="25" name="bsc_brand_colors[third-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['third-label'] ) ) { echo esc_html( $color_array['third-label'], 'bsc-brand-colors' ); } ?>" placeholder="Name this color" />
 					</label>
 				</fieldset>
 
