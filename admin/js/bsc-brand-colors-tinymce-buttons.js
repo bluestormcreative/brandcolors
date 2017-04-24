@@ -12,7 +12,7 @@
 	init : function(editor, url) {
 
 		editor.addButton( 'bsc_bc_tinymce_button', {
-			text: 'Brand Colors',
+			text: '',
 			type: 'menubutton',
 			classes: 'bsc-bc-button',
 			icon: 'icon dashicons-admin-appearance',
