@@ -29,6 +29,10 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+/*
+* Define the plugin path.
+*
+*/
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 /*
@@ -47,8 +51,10 @@ function bsc_bc_setup_plugin() {
 
 }
 
-add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
-
+/**
+ * Enqueue our scripts and styles.
+ *
+ */
 function bsc_bc_add_scripts() {
 	wp_enqueue_style( 'wp-color-picker' );
 	wp_enqueue_script( 'wp-color-picker' );
@@ -62,20 +68,18 @@ function bsc_bc_add_scripts() {
 		'brand_colors'	=> get_option( 'bsc_brand_colors' ),
 	);
 	wp_localize_script( 'bsc-bc-buttons', 'php_vars', $data_to_be_passed );
-
 }
-
+add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
 
 /*
 * Set up plugin menu page under Appearance top-level menu
 *
 */
-add_action( 'admin_menu', 'bsc_bc_setup_menu' );
-
 function bsc_bc_setup_menu() {
 
 	add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_display_admin_page' );
 }
+add_action( 'admin_menu', 'bsc_bc_setup_menu' );
 
 
 /*
