@@ -12,10 +12,10 @@
  * @package           Bsc_Brand_Colors
  *
  * @wordpress-plugin
- * Plugin Name:       Brand Colors
+ * Plugin Name:       Simple Branded Text Colors
  * Plugin URI:        https://github.com/bluestormcreative/brandcolors
- * Description:       Devs don't let users use colorpickers. Give them their brand colors instead.
- * Version:           1.0.1
+ * Description:       Set specific, branded colors to wrap text with in the editor.
+ * Version:           1.0.2
  * Author:            Blue Storm Creative
  * Author URI:        https://bluestormcreative.com
  * License:           GPL-2.0+
@@ -29,13 +29,20 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
+/*
+* Define the plugin path.
+*
+*/
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
 
 /*
 * Register activation hook to run setup function
 *
 */
 register_activation_hook( PLUGIN_URL, 'bsc_bc_setup_plugin' );
+
 
 /**
  * Setup our plugin functions
@@ -47,8 +54,11 @@ function bsc_bc_setup_plugin() {
 
 }
 
-add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
 
+/**
+ * Enqueue our scripts and styles.
+ *
+ */
 function bsc_bc_add_scripts() {
 	wp_enqueue_style( 'wp-color-picker' );
 	wp_enqueue_script( 'wp-color-picker' );
@@ -62,20 +72,19 @@ function bsc_bc_add_scripts() {
 		'brand_colors'	=> get_option( 'bsc_brand_colors' ),
 	);
 	wp_localize_script( 'bsc-bc-buttons', 'php_vars', $data_to_be_passed );
-
 }
+add_action( 'admin_enqueue_scripts', 'bsc_bc_add_scripts' );
 
 
 /*
 * Set up plugin menu page under Appearance top-level menu
 *
 */
-add_action( 'admin_menu', 'bsc_bc_setup_menu' );
-
 function bsc_bc_setup_menu() {
 
-	add_submenu_page( 'themes.php', 'Brand Colors', 'Brand Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_display_admin_page' );
+	add_submenu_page( 'themes.php', 'Simple Branded Text Colors', 'Set Text Colors', 'manage_options', 'bsc_brand_colors', 'bsc_bc_display_admin_page' );
 }
+add_action( 'admin_menu', 'bsc_bc_setup_menu' );
 
 
 /*
@@ -84,11 +93,11 @@ function bsc_bc_setup_menu() {
 */
 function bsc_bc_add_action_links( $links ) {
 
-    $action_link = '<a href="themes.php?page=bsc_brand_colors">' . esc_html( 'Set Brand Colors', 'bsc-brand-colors' ) . '</a>';
+	$action_link = '<a href="themes.php?page=bsc_brand_colors">' . esc_html( 'Set branded text colors', 'bsc-brand-colors' ) . '</a>';
 
 	// Add to the end of default action links.
-    array_push( $links, $action_link );
-  	return $links;
+	array_push( $links, $action_link );
+	  return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_action_links', 10, 2 );
 
@@ -104,8 +113,6 @@ if ( ! function_exists( 'bsc_bc_update_brand_colors' ) ) {
 }
 add_action( 'admin_init', 'bsc_bc_update_brand_colors' );
 
-
-
 /**
  * Render the admin page
  *
@@ -118,42 +125,44 @@ function bsc_bc_setup_admin_page() {
 
 	<div class="wrap">
 
-	    <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+		<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-	    <form method="post" action="options.php" name="brand-colors" class="set-colors-form">
+		<div class="description"><p><?php echo esc_html( 'Set up your global brand colors here. These colors will be easily available to use with text on any post or page.', 'bsc_brand_colors' ); ?></div>
 
-	        <?php
+		<form method="post" action="options.php" name="brand-colors" class="set-colors-form">
+
+			<?php
 			settings_fields( 'bsc_brand_colors' );
 			do_settings_sections( 'bsc_brand_colors' );
 
 			$color_array = get_option( 'bsc_brand_colors' );
 			?>
 
-	            <!-- Our color picker field -->
-	            <fieldset>
-	                <legend class="screen-reader-text"><span><?php esc_html_e( 'Add a Primary brand color', 'bsc-brand-colors' ); ?></span></legend>
-	                <label for="bsc_brand_colors-primary-color">
-	                    <input type="text" id="bsc_brand_colors-primary-color" name="bsc_brand_colors[primary-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['primary-color'] ) ) { echo esc_html( $color_array['primary-color'], 'bsc-brand-colors' ); } ?>" />
+				<!-- Our color picker field -->
+				<fieldset>
+					<legend class="screen-reader-text"><span><?php esc_html_e( 'Add a Primary brand color', 'bsc-brand-colors' ); ?></span></legend>
+					<label for="bsc_brand_colors-primary-color">
+						<input type="text" id="bsc_brand_colors-primary-color" name="bsc_brand_colors[primary-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['primary-color'] ) ) { echo esc_html( $color_array['primary-color'], 'bsc-brand-colors' ); } ?>" />
 
-						<input type="text" id="bsc_brand_colors-primary-color-label" size="25" name="bsc_brand_colors[primary-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['primary-label'] ) ) { echo esc_html( $color_array['primary-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
-	                </label>
+						<input type="text" id="bsc_brand_colors-primary-color-label" size="25" name="bsc_brand_colors[primary-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['primary-label'] ) ) { echo esc_html( $color_array['primary-label'], 'bsc-brand-colors' ); } ?>" placeholder="Name this color" />
+					</label>
 					<br>
 					<label for="bsc_brand_colors-second-color">
 						<input type="text" id="bsc_brand_colors-second-color" name="bsc_brand_colors[second-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['second-color'] ) ) { echo esc_html( $color_array['second-color'], 'bsc-brand-colors' ); } ?>" />
 
-						<input type="text" id="bsc_brand_colors-second-color-label" size="25" name="bsc_brand_colors[second-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['second-label'] ) ) { echo esc_html( $color_array['second-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+						<input type="text" id="bsc_brand_colors-second-color-label" size="25" name="bsc_brand_colors[second-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['second-label'] ) ) { echo esc_html( $color_array['second-label'], 'bsc-brand-colors' ); } ?>" placeholder="Name this color" />
 					</label>
 					<br>
 					<label for="bsc_brand_colors-third-color">
 						<input type="text" id="bsc_brand_colors-third-color" name="bsc_brand_colors[third-color]" class="bsc-color-picker color-field" value="<?php if ( isset( $color_array['third-color'] ) ) { echo esc_html( $color_array['third-color'], 'bsc-brand-colors' ); } ?>" />
 
-						<input type="text" id="bsc_brand_colors-third-color-label" size="25" name="bsc_brand_colors[third-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['third-label'] ) ) { echo esc_html( $color_array['third-label'], 'bsc-brand-colors'); } ?>" placeholder="Name this color" />
+						<input type="text" id="bsc_brand_colors-third-color-label" size="25" name="bsc_brand_colors[third-label]" class="bsc-color-label" value="<?php if ( isset( $color_array['third-label'] ) ) { echo esc_html( $color_array['third-label'], 'bsc-brand-colors' ); } ?>" placeholder="Name this color" />
 					</label>
-	            </fieldset>
+				</fieldset>
 
-	        <?php submit_button( 'Save brand colors', 'primary','submit', true ); ?>
+			<?php submit_button( 'Save brand colors', 'primary','submit', true ); ?>
 
-	    </form>
+		</form>
 
 	</div>
 	<?php
@@ -161,6 +170,7 @@ function bsc_bc_setup_admin_page() {
 	return ob_get_clean();
 
 }
+
 
 /**
  * Display the admin page
@@ -172,6 +182,7 @@ function bsc_bc_display_admin_page() {
 
 }
 
+
 /**
  * Declare the TinyMCE button
  *
@@ -181,7 +192,7 @@ function bsc_bc_display_admin_page() {
 
 	// check user permissions
 	if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
-	 	return;
+		 return;
 	}
 
 	// verify the post type
@@ -232,9 +243,9 @@ function bsc_bc_register_tinymce_button( $buttons ) {
  */
 function bsc_bc_add_header_styles() {
 
-	$colors = get_option('bsc_brand_colors');
+	$colors = get_option( 'bsc_brand_colors' );
 
-	ob_start(); ?>
+	?>
 	<style id="bsc-bc-button-styles">
 
 		.mce-container .mce-bc-button-first span {
@@ -266,8 +277,6 @@ function bsc_bc_add_header_styles() {
 
 
 	</style>
-
 	<?php
-
 }
 add_action( 'admin_head', 'bsc_bc_add_header_styles' );

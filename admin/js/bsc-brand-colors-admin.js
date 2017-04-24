@@ -1,9 +1,9 @@
-(function( $ ) {
+( function( $ ) {
 	'use strict';
 
     // Add Color Picker to all inputs that have 'color-field' class.
-    $(function() {
-        $('.color-field').wpColorPicker();
+    $( function() {
+        $( '.color-field' ).wpColorPicker();
     });
 
 
