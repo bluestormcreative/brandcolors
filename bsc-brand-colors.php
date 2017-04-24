@@ -127,6 +127,8 @@ function bsc_bc_setup_admin_page() {
 
 		<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
+		<div class="description"><p>Set up your global brand colors here. These colors will be easily available to use with text on any post or page.</div>
+
 		<form method="post" action="options.php" name="brand-colors" class="set-colors-form">
 
 			<?php
