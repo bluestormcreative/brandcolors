@@ -42,7 +42,7 @@ define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
  *
  */
 function bsc_bc_add_scripts() {
-	
+
 	wp_enqueue_style( 'wp-color-picker' );
 	wp_enqueue_script( 'wp-color-picker' );
 
@@ -154,7 +154,7 @@ function bsc_bc_setup_admin_page() {
 	</div>
 	<?php
 
-	return ob_get_clean();
+	return apply_filters( 'bsc_bc_admin_page', ob_get_clean() );
 
 }
 
