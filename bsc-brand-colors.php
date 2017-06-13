@@ -86,7 +86,9 @@ function bsc_bc_add_action_links( $links ) {
 
 	// Add to the end of default action links.
 	array_push( $links, $action_link );
-	  return $links;
+
+	// Make these links themselves filterable
+	return apply_filters( 'bsc_bc_action_links', $links );
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_action_links', 10, 2 );
 
@@ -101,6 +103,7 @@ if ( ! function_exists( 'bsc_bc_update_brand_colors' ) ) {
 	}
 }
 add_action( 'admin_init', 'bsc_bc_update_brand_colors' );
+
 
 /**
  * Render the admin page
