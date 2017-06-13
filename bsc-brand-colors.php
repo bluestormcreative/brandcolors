@@ -42,6 +42,7 @@ define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
  *
  */
 function bsc_bc_add_scripts() {
+	
 	wp_enqueue_style( 'wp-color-picker' );
 	wp_enqueue_script( 'wp-color-picker' );
 
@@ -91,6 +92,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_ac
  *
  */
 if ( ! function_exists( 'bsc_bc_update_brand_colors' ) ) {
+
 	function bsc_bc_update_brand_colors() {
 		register_setting( 'bsc_brand_colors', 'bsc_brand_colors' );
 	}
@@ -173,19 +175,20 @@ function bsc_bc_display_admin_page() {
  *
  */
  function bsc_bc_add_tinymce_button() {
+
 	 global $typenow;
 
-	// check user permissions
+	// Check user permissions.
 	if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
 		 return;
 	}
 
-	// verify the post type
+	// Verify the post type.
 	if ( ! in_array( $typenow, array( 'post', 'page' ), true ) ) {
 		 return;
 	}
 
-	// check if WYSIWYG is enabled
+	// Check if WYSIWYG is enabled.
 	if ( get_user_option( 'rich_editing' ) !== 'true' ) {
 		return;
 	}
@@ -204,6 +207,7 @@ add_action( 'admin_head', 'bsc_bc_add_tinymce_button' );
  * @return array Modified array of registered TinyMCE Plugins
  */
 function bsc_bc_add_tinymce_plugin( $plugin_array ) {
+
 	$plugin_array['bsc_bc_tinymce_button'] = PLUGIN_URL . '/admin/js/bsc-brand-colors-tinymce-buttons.js';
 
 	return $plugin_array;
@@ -217,6 +221,7 @@ function bsc_bc_add_tinymce_plugin( $plugin_array ) {
  * @return array Modified array of registered TinyMCE Buttons
  */
 function bsc_bc_register_tinymce_button( $buttons ) {
+
 	array_push( $buttons, 'bsc_bc_tinymce_button' );
 	return $buttons;
 }
