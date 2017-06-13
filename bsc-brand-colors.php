@@ -45,17 +45,6 @@ register_activation_hook( PLUGIN_URL, 'bsc_bc_setup_plugin' );
 
 
 /**
- * Setup our plugin functions
- *
- */
-function bsc_bc_setup_plugin() {
-
-	echo 'setup function ran';
-
-}
-
-
-/**
  * Enqueue our scripts and styles.
  *
  */
