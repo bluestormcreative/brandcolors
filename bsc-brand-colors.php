@@ -37,13 +37,6 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 
-/*
-* Register activation hook to run setup function
-*
-*/
-register_activation_hook( PLUGIN_URL, 'bsc_bc_setup_plugin' );
-
-
 /**
  * Enqueue our scripts and styles.
  *
