@@ -81,7 +81,6 @@ function bsc_bc_add_action_links( $links ) {
 	// Add to the end of default action links.
 	array_push( $links, apply_filters( 'bsc_bc_hide_action_links', $action_link ) );
 
-	// Make these links themselves filterable
 	return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_action_links', 10, 2 );
@@ -275,14 +274,19 @@ add_action( 'admin_head', 'bsc_bc_add_header_styles' );
 /**
  * Hide admin page and action links
  *
+ * Adding this function to the functions.php file of the theme will hide the text colors admin area from users.
  *
  * @author Shannon MacMillan
  */
 function bsc_bc_hide_controls() {
 
+	// Hide the admin page and show a "no permission" notice instead.
 	add_filter( 'bsc_bc_hide_admin', 'bsc_bc_admin_notice' );
+
+	// Hide the 'Set Text Colors' action link from the plugin admin table.
 	add_filter( 'bsc_bc_hide_action_links', '__return_false' );
 
+	// Remove the submenu item under Appearance.
 	add_action( 'admin_init', 'bsc_bc_remove_menu_item' );
 
 }
@@ -301,6 +305,7 @@ function bsc_bc_admin_notice() {
 
 	return $notice;
 }
+
 
 /**
  * Hide the admin menu.
