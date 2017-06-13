@@ -79,10 +79,10 @@ function bsc_bc_add_action_links( $links ) {
 	$action_link = '<a href="themes.php?page=bsc_brand_colors">' . esc_html( 'Set branded text colors', 'bsc-brand-colors' ) . '</a>';
 
 	// Add to the end of default action links.
-	array_push( $links, $action_link );
+	array_push( $links, apply_filters( 'bsc_bc_hide_action_links', $action_link ) );
 
 	// Make these links themselves filterable
-	return apply_filters( 'bsc_bc_action_links', $links );
+	return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bsc_bc_add_action_links', 10, 2 );
 
@@ -154,7 +154,7 @@ function bsc_bc_setup_admin_page() {
 	</div>
 	<?php
 
-	return apply_filters( 'bsc_bc_admin_page', ob_get_clean() );
+	return apply_filters( 'bsc_bc_hide_admin', ob_get_clean() );
 
 }
 
@@ -270,3 +270,44 @@ function bsc_bc_add_header_styles() {
 	<?php
 }
 add_action( 'admin_head', 'bsc_bc_add_header_styles' );
+
+
+/**
+ * Hide admin page and action links
+ *
+ *
+ * @author Shannon MacMillan
+ */
+function bsc_bc_hide_controls() {
+
+	add_filter( 'bsc_bc_hide_admin', 'bsc_bc_admin_notice' );
+	add_filter( 'bsc_bc_hide_action_links', '__return_false' );
+
+	add_action( 'admin_init', 'bsc_bc_remove_menu_item' );
+
+}
+
+
+/**
+ * Show a 'sorry' notice if the admin is accidentally accessed.
+ *
+ * @return string $notice Message string.
+ *
+ * @author Shannon MacMillan
+ */
+function bsc_bc_admin_notice() {
+
+	$notice = '<div style="margin-top: 50px;">' . esc_html( 'Sorry, you do not have permission to set text colors.', 'bsc-brand-colors' ) . ' </div>';
+
+	return $notice;
+}
+
+/**
+ * Hide the admin menu.
+ *
+ * @author Shannon MacMillan
+ */
+function bsc_bc_remove_menu_item() {
+
+	remove_submenu_page( 'themes.php', 'bsc_brand_colors' );
+}
