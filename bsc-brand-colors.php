@@ -130,7 +130,7 @@ function bsc_bc_setup_admin_page() {
 			$color_array = get_option( 'bsc_brand_colors' );
 			?>
 
-				<!-- Our color picker field -->
+				<!-- Our color picker fields -->
 				<fieldset>
 					<legend class="screen-reader-text"><span><?php esc_html_e( 'Add a Primary brand color', 'bsc-brand-colors' ); ?></span></legend>
 					<label for="bsc_brand_colors-primary-color">
@@ -152,7 +152,7 @@ function bsc_bc_setup_admin_page() {
 					</label>
 				</fieldset>
 
-			<?php submit_button( 'Save brand colors', 'primary','submit', true ); ?>
+			<?php submit_button( 'Save brand colors', 'primary', 'submit', true ); ?>
 
 		</form>
 
