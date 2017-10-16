@@ -15,7 +15,7 @@
  * Plugin Name:       Simple Branded Text Colors
  * Plugin URI:        https://github.com/bluestormcreative/brandcolors
  * Description:       Set specific, branded colors to wrap text with in the editor.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            Blue Storm Creative
  * Author URI:        https://bluestormcreative.com
  * License:           GPL-2.0+
