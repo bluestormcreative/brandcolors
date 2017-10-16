@@ -2,8 +2,8 @@
 Contributors: panmac
 Tags: text colors, tinymce
 Requires at least: 3.0.1
-Tested up to: 4.7.4
-Stable tag: 4.7
+Tested up to: 4.8.2
+Stable tag: 4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,7 @@ A simple plugin that allows users to choose their branded colors to wrap text in
 4. Use the three colorpicker fields to set your global brand colors. Optionally give each color a name.
 5. In the post editor, select the text you would like to color. Click on the paintbrush icon in the editor toolbar and select a brand color to wrap the text.
 6. To clear a color, select the colored text, click on the paintbrush icon and choose "Clear color".
+7. To hide access to the plugin settings menu, add `bsc_bc_hide_controls();` to the `functions.php` file in your theme or a functionality plugin.
 
 == Frequently Asked Questions ==
 
@@ -39,5 +40,5 @@ No questions yet.
 
 == Changelog ==
 
-= 1.0.2 =
+= 1.0.3 =
 Initial release.
