@@ -7,3 +7,4 @@ A simple WordPress plugin that allows users to choose their branded colors to wr
 3. Use the colorpickers to choose three colors. Optionally name these colors.
 4. On any post or page, select the text you wish to color, and click the paintbrush icon from the toolbar. Then you can select which of your three colors you'd like to wrap the text in.
 5. To remove a color, select the colored text, click the paintbrush, and choose "Clear color".
+6. To hide access to the plugin settings menu, add `bsc_bc_hide_controls();` to the `functions.php` file in your theme or a functionality plugin.
