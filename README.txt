@@ -4,14 +4,15 @@ Tags: text colors, tinymce
 Requires at least: 3.0.1
 Tested up to: 4.8.2
 Stable tag: 4.8
+Requires PHP: 5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple plugin that lets you choose your brand colors once, and then use them to change the color of selected text on any page or post. Quickly update text colors across pages without using the colorpicker every time.
+Give users some selected colors to wrap their text with, and keep their sites clean and beautiful.
 
 == Description ==
 
-A simple plugin that allows users to choose their branded colors to wrap text in the TinyMCE editor. Provides a TinyMCE button in the Visual editor to choose these colors quickly without using the colorpicker or entering a hex code on each page or post.
+A simple plugin that allows users to choose their branded colors to wrap text in the editor. Provides a TinyMCE button in the Visual editor to choose these colors quickly without using the colorpicker or entering a hex code on each page or post.
 
 
 == Installation ==
